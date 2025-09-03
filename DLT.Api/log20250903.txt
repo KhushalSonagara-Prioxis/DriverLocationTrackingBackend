@@ -500,3 +500,11 @@ Common.HttpStatusCodeException: Trip not found
    at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
    at ExceptionMiddleware.InvokeAsync(HttpContext context) in /Users/kishanchudasama/PrioxisTech/DriverLocationTrackingBackend/DLT.Api/Middlewares/ExceptionMiddleware.cs:line 23
 2025-09-03 11:09:22.314 +05:30 [INF] ::::::End of Middleware::::
+2025-09-03 11:36:34.952 +05:30 [INF] ::::In Middleware::::
+2025-09-03 11:36:36.100 +05:30 [INF] ::::::End of Middleware::::
+2025-09-03 11:37:34.946 +05:30 [INF] ::::In Middleware::::
+2025-09-03 11:37:35.041 +05:30 [INF] ::::::End of Middleware::::
+2025-09-03 11:38:34.967 +05:30 [INF] ::::In Middleware::::
+2025-09-03 11:38:35.036 +05:30 [INF] ::::::End of Middleware::::
+2025-09-03 11:39:34.994 +05:30 [INF] ::::In Middleware::::
+2025-09-03 11:39:35.070 +05:30 [INF] ::::::End of Middleware::::
