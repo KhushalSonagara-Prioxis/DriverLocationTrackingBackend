@@ -3,6 +3,7 @@ using DemoProject.Controllers;
 using DLT.Service.Repository.Interface;
 using Microsoft.AspNetCore.Mvc;
 using Models.Models.CommonModel;
+using Models.RequestModel;
 using Models.ResponsetModel;
 using Newtonsoft.Json;
 
@@ -39,6 +40,16 @@ public class TripController : BaseController
         }
 
         return Ok(BindSearchResult(list, searchModel, "All Trips"));
+    }
 
+    [HttpPost("AddTripStatus/{tripSID}")]
+    public async Task<ActionResult> AddTripStatus([FromRoute]string tripSID,TripUpdateStatusRequestModel  tripUpdateStatusRequestModel)
+    {
+        var success = await _tripRepository.AddTripUpdate(tripSID, tripUpdateStatusRequestModel);
+        if (!success)
+        {
+            return BadRequest();
+        }
+        return Ok(new { message = "Trip Update added successfully" });
     }
 }

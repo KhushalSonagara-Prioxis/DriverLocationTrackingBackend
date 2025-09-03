@@ -3,6 +3,7 @@ using DLT.Models.Models.DriverLocationTracking;
 using DLT.Service.Repository.Interface;
 using Models.Models.CommonModel;
 using Models.Models.SpDbContext;
+using Models.RequestModel;
 using Service.RepositoryFactory;
 using Service.UnitOfWork;
 
@@ -19,7 +20,7 @@ public class TripRepository : ITripRepository
         _spContext = spContext;
         _unitOfWork = unitOfWork;
     }
-    public async Task<Page>  GetAllTrips(Dictionary<string, object> parameters)
+    public async Task<Page> GetAllTrips(Dictionary<string, object> parameters)
     {
         try
         {
@@ -33,6 +34,42 @@ public class TripRepository : ITripRepository
             }
 
             return res;
+        }
+        catch (HttpStatusCodeException exception)
+        {
+            throw;
+        }
+        catch (Exception exception)
+        {
+            throw new HttpStatusCodeException((int)StatusCode.InternalServerError, exception.Message);
+        }
+    }
+
+    public async Task<bool> AddTripUpdate(string TripSID, TripUpdateStatusRequestModel request)
+    {
+        try
+        {
+            var trip = await _unitOfWork.GetRepository<Trip>().SingleOrDefaultAsync(t => t.TripSid == TripSID && t.TripStatus == (int)StatusEnum.InProgress);
+            if (trip == null)
+            {
+                throw new HttpStatusCodeException((int)StatusCode.NotFound, "No results found");
+            }
+
+            TripUpdate tripUpdate = new TripUpdate();
+            tripUpdate.DriverId = trip.DriverId ?? 0;
+            tripUpdate.TripId = trip.TripId;
+            tripUpdate.TripUpdatesSid = "TUS" + Guid.NewGuid().ToString();
+            if (!(request.TripUpdateStatus >= 9 && request.TripUpdateStatus <= 12))
+            {
+                throw new HttpStatusCodeException((int)StatusCode.BadRequest, "Invalid status");
+            }
+
+            tripUpdate.TripUpdatesStatus = request.TripUpdateStatus;
+            tripUpdate.Note = request.Note;
+            tripUpdate.TimeStamp = DateTime.Now;
+            await _unitOfWork.GetRepository<TripUpdate>().InsertAsync(tripUpdate);
+            await _unitOfWork.CommitAsync();
+            return true;
         }
         catch (HttpStatusCodeException exception)
         {

@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DLT.Models.Models.DriverLocationTracking;
 
-[Index("LocationSid", Name = "UQ__Location__EF33EBE2E6DB351D", IsUnique = true)]
+[Index("LocationSid", Name = "UQ__Location__EF33EBE2A11B8F91", IsUnique = true)]
 public partial class Location
 {
     [Key]

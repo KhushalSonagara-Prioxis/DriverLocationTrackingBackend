@@ -58,7 +58,6 @@ public class DriverRepository : IDriverRepository
         {
             throw new HttpStatusCodeException((int)StatusCode.InternalServerError, exception);
         }
-        return true;
     }
 
     public async Task<DriverCurrectLocationResponseModel> GetDriverCurrectLocationAsync(string tripSID)

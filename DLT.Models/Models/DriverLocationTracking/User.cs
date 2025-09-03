@@ -6,9 +6,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DLT.Models.Models.DriverLocationTracking;
 
-[Index("UserEmail", Name = "UQ__Users__08638DF8956AD29D", IsUnique = true)]
-[Index("UserSid", Name = "UQ__Users__2B6A7E554846985D", IsUnique = true)]
-[Index("PhoneNumber", Name = "UQ__Users__85FB4E38CD7BB9BE", IsUnique = true)]
+[Index("UserEmail", Name = "UQ__Users__08638DF8D11950B1", IsUnique = true)]
+[Index("UserSid", Name = "UQ__Users__2B6A7E55B4EE2A91", IsUnique = true)]
+[Index("PhoneNumber", Name = "UQ__Users__85FB4E38579D69F9", IsUnique = true)]
 public partial class User
 {
     [Key]

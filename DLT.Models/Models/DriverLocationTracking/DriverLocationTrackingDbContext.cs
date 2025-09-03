@@ -25,7 +25,7 @@ public partial class DriverLocationTrackingDbContext : DbContext
     {
         modelBuilder.Entity<DriverCurrentLocation>(entity =>
         {
-            entity.HasKey(e => e.DriverCurrentLocationId).HasName("PK__DriverCu__5190FB68C90F48A5");
+            entity.HasKey(e => e.DriverCurrentLocationId).HasName("PK__DriverCu__5190FB688597CBE3");
 
             entity.Property(e => e.LastUpdate).HasDefaultValueSql("(getdate())");
 
@@ -36,12 +36,12 @@ public partial class DriverLocationTrackingDbContext : DbContext
 
         modelBuilder.Entity<Location>(entity =>
         {
-            entity.HasKey(e => e.LocationId).HasName("PK__Location__E7FEA477BB529A61");
+            entity.HasKey(e => e.LocationId).HasName("PK__Location__E7FEA477238601DD");
         });
 
         modelBuilder.Entity<Trip>(entity =>
         {
-            entity.HasKey(e => e.TripId).HasName("PK__Trips__51DC711E5713DE39");
+            entity.HasKey(e => e.TripId).HasName("PK__Trips__51DC711ED95605D7");
 
             entity.Property(e => e.CreatedDate).HasDefaultValueSql("(getdate())");
             entity.Property(e => e.LastModifiedDate).HasDefaultValueSql("(getdate())");
@@ -65,7 +65,7 @@ public partial class DriverLocationTrackingDbContext : DbContext
 
         modelBuilder.Entity<TripUpdate>(entity =>
         {
-            entity.HasKey(e => e.TripUpdatesId).HasName("PK__TripUpda__BB9599DB8324F37F");
+            entity.HasKey(e => e.TripUpdatesId).HasName("PK__TripUpda__BB9599DBD27BE19B");
 
             entity.Property(e => e.TimeStamp).HasDefaultValueSql("(getdate())");
 
@@ -80,7 +80,7 @@ public partial class DriverLocationTrackingDbContext : DbContext
 
         modelBuilder.Entity<User>(entity =>
         {
-            entity.HasKey(e => e.UserId).HasName("PK__Users__1788CCAC876D9706");
+            entity.HasKey(e => e.UserId).HasName("PK__Users__1788CCAC1A4016E7");
 
             entity.Property(e => e.CreatedDate).HasDefaultValueSql("(getdate())");
             entity.Property(e => e.LastModifiedDate).HasDefaultValueSql("(getdate())");
