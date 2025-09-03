@@ -70,23 +70,23 @@ public class Program
             options.EnableSensitiveDataLogging(true);
         }, ServiceLifetime.Transient);
         // Register the UserService
-        builder.Services.AddCors(options =>
-        {
-            options.AddPolicy("AllowAll", policy =>
-            {
-                policy.AllowAnyOrigin()
-                    .AllowAnyMethod()
-                    .AllowAnyHeader();
-            });
-
-            // OR restrict to specific origin (better for production)
-            options.AddPolicy("AllowFrontend", policy =>
-            {
-                policy.WithOrigins("http://localhost:3000") // frontend URL
-                    .AllowAnyMethod()
-                    .AllowAnyHeader();
-            });
-        });
+        // builder.Services.AddCors(options =>
+        // {
+        //     options.AddPolicy("AllowAll", policy =>
+        //     {
+        //         policy.AllowAnyOrigin()
+        //             .AllowAnyMethod()
+        //             .AllowAnyHeader();
+        //     });
+        //
+        //     // OR restrict to specific origin (better for production)
+        //     options.AddPolicy("AllowFrontend", policy =>
+        //     {
+        //         policy.WithOrigins("http://localhost:3000") // frontend URL
+        //             .AllowAnyMethod()
+        //             .AllowAnyHeader();
+        //     });
+        // });
         UnitOfWorkServiceCollectionExtentions.AddUnitOfWork<DriverLocationTrackingDbContext>(builder.Services);
         var app = builder.Build();
 
