@@ -72,6 +72,7 @@ public class Program
             {
                 policy.WithOrigins(
                     "http://localhost:3000",
+                    "http://192.168.1.119:3000",
                     "http://192.168.1.119:3000"
                 )
                 .AllowAnyMethod()
