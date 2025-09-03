@@ -24,6 +24,7 @@ public class Program
         
         // Add services to the container.
         builder.Services.AddScoped<IDriverRepository, DriverRepository>();
+        builder.Services.AddScoped<ITripRepository, TripRepository>();
         
         //connection String
         // Get connection string from appsettings.json
@@ -97,7 +98,7 @@ public class Program
         }
         app.UseMiddleware<ExceptionMiddleware>();
         app.UseHttpsRedirection();
-
+        app.UseCors("AllowAll");
         app.UseAuthorization();
 
 
