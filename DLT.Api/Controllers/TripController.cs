@@ -74,4 +74,26 @@ public class TripController : BaseController
         }
         return Ok(new { message = "Trip created successfully" });
     }
+
+    [HttpPost("TripStart/{tripSID}")]
+    public async Task<ActionResult> TripStart([FromRoute] string tripSID)
+    {
+        var success = await _tripRepository.TripsStart(tripSID);
+        if (!success)
+        {
+            return BadRequest();
+        }
+        return Ok(new { message = "Trip start successfully" });
+    }
+    
+    [HttpPost("TripEnd/{tripSID}")]
+    public async Task<ActionResult> TripEnd([FromRoute] string tripSID)
+    {
+        var success = await _tripRepository.TripsEnd(tripSID);
+        if (!success)
+        {
+            return BadRequest();
+        }
+        return Ok(new { message = "Trip Ended successfully" });
+    }
 }

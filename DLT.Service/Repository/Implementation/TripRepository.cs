@@ -138,6 +138,120 @@ public class TripRepository : ITripRepository
         }
     }
 
+    public async Task<bool> TripsStart(string tripSID)
+    {
+        try
+        {
+            var trip = await _unitOfWork.GetRepository<Trip>().SingleOrDefaultAsync(t => t.TripSid == tripSID);
+            if (trip == null)
+            {
+                throw new HttpStatusCodeException((int)StatusCode.NotFound, "No results found");
+            }
+            trip.TripStatus = (int)StatusEnum.InProgress;
+            trip.LastModifiedDate =  DateTime.Now;
+            _unitOfWork.GetRepository<Trip>().Update(trip);
+            
+            await _unitOfWork.CommitAsyncWithTransaction();
+            TripUpdate tripUpdate = new TripUpdate();
+            tripUpdate.TripUpdatesSid = "TUS" + Guid.NewGuid().ToString();
+            tripUpdate.DriverId = trip.DriverId ?? 0;
+            tripUpdate.TripId = trip.TripId;
+            tripUpdate.TripUpdatesStatus = (int)StatusEnum.Start;
+            tripUpdate.Note = "Stated trip";
+            tripUpdate.TimeStamp = DateTime.Now;
+            tripUpdate.TripUpdatedLatitude = trip.StartLatitude;
+            tripUpdate.TripUpdatedLongitude = trip.StartLongitude;
+            await _unitOfWork.GetRepository<TripUpdate>().InsertAsync(tripUpdate);
+            await _unitOfWork.CommitAsyncWithTransaction();
+            DriverCurrentLocation driverCurrentLocation = new DriverCurrentLocation();
+            driverCurrentLocation.DriverCurrentLocationSid = "DCL-"+Guid.NewGuid().ToString();
+            driverCurrentLocation.TripId = trip.TripId;
+            driverCurrentLocation.Latitude = trip.StartLatitude;
+            driverCurrentLocation.Longitude = trip.StartLongitude;
+            driverCurrentLocation.LastUpdate =  DateTime.Now;
+            await _unitOfWork.GetRepository<DriverCurrentLocation>().InsertAsync(driverCurrentLocation);
+            await _unitOfWork.CommitAsyncWithTransaction();
+            if (_unitOfWork.dbContextTransaction != null)
+            {
+                await _unitOfWork.dbContextTransaction.CommitAsync();
+            }
+
+            return true;
+        }
+        catch (HttpStatusCodeException exception)
+        {
+            if(_unitOfWork.dbContextTransaction != null)
+            {
+                await _unitOfWork.dbContextTransaction.RollbackAsync();
+            }
+            throw;
+        }
+        catch (Exception exception)
+        {
+            if(_unitOfWork.dbContextTransaction != null)
+            {
+                await _unitOfWork.dbContextTransaction.RollbackAsync();
+            }
+            throw new HttpStatusCodeException((int)StatusCode.InternalServerError, exception.Message);
+        }
+    }
+    public async Task<bool> TripsEnd(string tripSID)
+    {
+        try
+        {
+            var trip = await _unitOfWork.GetRepository<Trip>().SingleOrDefaultAsync(t => t.TripSid == tripSID);
+            if (trip == null)
+            {
+                throw new HttpStatusCodeException((int)StatusCode.NotFound, "No results found");
+            }
+
+            var driverCurrentLocation = await _unitOfWork.GetRepository<DriverCurrentLocation>()
+                .SingleOrDefaultAsync(t => t.TripId == trip.TripId);
+            if (driverCurrentLocation == null)
+            {
+                throw new HttpStatusCodeException((int)StatusCode.NotFound, "Driver Current Location not found");
+            }
+            trip.TripStatus = (int)StatusEnum.Completed;
+            trip.LastModifiedDate =  DateTime.Now;
+            _unitOfWork.GetRepository<Trip>().Update(trip);
+            
+            await _unitOfWork.CommitAsyncWithTransaction();
+            TripUpdate tripUpdate = new TripUpdate();
+            tripUpdate.TripUpdatesSid = "TUS" + Guid.NewGuid().ToString();
+            tripUpdate.DriverId = trip.DriverId ?? 0;
+            tripUpdate.TripId = trip.TripId;
+            tripUpdate.TripUpdatesStatus = (int)StatusEnum.End;
+            tripUpdate.Note = "Trip is Ended trip";
+            tripUpdate.TimeStamp = DateTime.Now;
+            tripUpdate.TripUpdatedLatitude = driverCurrentLocation.Latitude;
+            tripUpdate.TripUpdatedLongitude = driverCurrentLocation.Longitude;
+            await _unitOfWork.GetRepository<TripUpdate>().InsertAsync(tripUpdate);
+            await _unitOfWork.CommitAsyncWithTransaction();
+            if (_unitOfWork.dbContextTransaction != null)
+            {
+                await _unitOfWork.dbContextTransaction.CommitAsync();
+            }
+
+            return true;
+        }
+        catch (HttpStatusCodeException exception)
+        {
+            if(_unitOfWork.dbContextTransaction != null)
+            {
+                await _unitOfWork.dbContextTransaction.RollbackAsync();
+            }
+            throw;
+        }
+        catch (Exception exception)
+        {
+            if(_unitOfWork.dbContextTransaction != null)
+            {
+                await _unitOfWork.dbContextTransaction.RollbackAsync();
+            }
+            throw new HttpStatusCodeException((int)StatusCode.InternalServerError, exception.Message);
+        }
+    }
+
     public async Task<List<TripUpdateResponseModel>> GetAllTripUpdateStatus(string tripSID)
     {
         try
@@ -160,5 +274,7 @@ public class TripRepository : ITripRepository
         {
             throw new HttpStatusCodeException((int)StatusCode.InternalServerError, exception.Message);
         }
+
+        
     }
 }
