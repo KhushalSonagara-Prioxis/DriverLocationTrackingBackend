@@ -63,4 +63,15 @@ public class TripController : BaseController
         }
         return Ok(response);
     }
+
+    [HttpPost("AddTrip")]
+    public async Task<ActionResult> AddTrip([FromBody] TripRequestModel request)
+    {
+        var success = await _tripRepository.CreateTrip(request);
+        if (!success)
+        {
+            return BadRequest();
+        }
+        return Ok(new { message = "Trip created successfully" });
+    }
 }

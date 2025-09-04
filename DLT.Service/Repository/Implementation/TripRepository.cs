@@ -27,8 +27,8 @@ public class TripRepository : ITripRepository
         try
         {
             var xmlParams = Common.CommonHelper.DictionaryToXml(parameters, "Search");
-            string query = "sp_SearchTrips {0}";
-            object[] param = { xmlParams };
+            string query = "sp_SearchTripsTest {0}";
+            object[] param = { xmlParams};
             var res = await _spContext.ExecutreStoreProcedureResultList(query, param);
             if (res == null)
             {
@@ -72,10 +72,23 @@ public class TripRepository : ITripRepository
             }
             var admin = await _unitOfWork.GetRepository<User>().SingleOrDefaultAsync(u => u.UserSid == model.UserSID);
             Trip t = new Trip();
-            t.TripSid = "TRI-" + Guid.NewGuid().ToString().Substring(0, 48);
+            t.TripSid = "TRI-" + Guid.NewGuid().ToString();
             t.StartLatitude = model.StartLatitude;
             t.StartLongitude = model.StartLongitude;
             t.StartLocation = sLocation.LocationId;
+            t.ToLatitude = model.ToLatitude;
+            t.ToLongitude = model.ToLongitude;
+            t.ToLocation = eLocation.LocationId;
+            t.DriverId = Driver.UserId;
+            t.CreatedBy = admin.UserId;
+            t.CreatedDate = DateTime.Now;
+            t.LastModifiedBy = admin.UserId;
+            t.LastModifiedDate = DateTime.Now;
+            t.TripStatus = (int)StatusEnum.Pending;
+            t.Status = (int)StatusEnum.Acitive;
+            await _unitOfWork.GetRepository<Trip>().InsertAsync(t);
+            await _unitOfWork.CommitAsync();
+            return true;
         }
         catch (HttpStatusCodeException exception)
         {
@@ -85,7 +98,6 @@ public class TripRepository : ITripRepository
         {
             throw new HttpStatusCodeException((int)StatusCode.InternalServerError, exception.Message);
         }
-        return true;
     }
 
     public async Task<bool> AddTripUpdate(string TripSID, TripUpdateStatusRequestModel request)

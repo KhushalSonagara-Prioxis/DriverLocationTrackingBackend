@@ -145,28 +145,35 @@ public static class SpRepository
         }
         public static async Task<Page> ExecutreStoreProcedureResultList(this DriverLocationTrackingSpContext catalogDbContext, string sqlQuery, object[] param)
         {
-            Page page = new Page();
-            var response = await catalogDbContext.Set<ExecutreStoreProcedureResultList>().FromSqlRaw(sqlQuery, param).ToListAsync();
-            if (response != null && response.Count > 0)
+            try
             {
-                var result = response.FirstOrDefault();
-
-                if (result == null) return page;
-
-                if (!string.IsNullOrEmpty(result.ErrorMessage))
+                Page page = new Page();
+                var response = await catalogDbContext.Set<ExecutreStoreProcedureResultList>().FromSqlRaw(sqlQuery, param).ToListAsync();
+                if (response != null && response.Count > 0)
                 {
-                    throw new HttpStatusCodeException(StatusCodes.Status500InternalServerError, result.ErrorMessage);
-                }
+                    var result = response.FirstOrDefault();
 
-                page.Meta.TotalResults = result.TotalCount;
-                if (!string.IsNullOrWhiteSpace(result.Result))
-                {
-                    var list = JsonConvert.DeserializeObject(result.Result);
-                    page.Result = list;
-                    return page;
+                    if (result == null) return page;
+
+                    if (!string.IsNullOrEmpty(result.ErrorMessage))
+                    {
+                        throw new HttpStatusCodeException(StatusCodes.Status500InternalServerError, result.ErrorMessage);
+                    }
+
+                    page.Meta.TotalResults = result.TotalCount;
+                    if (!string.IsNullOrWhiteSpace(result.Result))
+                    {
+                        var list = JsonConvert.DeserializeObject(result.Result);
+                        page.Result = list;
+                        return page;
+                    }
                 }
+                return page;
             }
-            return page;
+            catch (Exception ex)
+            {
+                throw ex;   
+            }
         }
     }
     

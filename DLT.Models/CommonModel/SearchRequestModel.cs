@@ -110,3 +110,8 @@ using System.Text.Json.Serialization;
         [JsonPropertyName("end_date")]
         public DateTime EndDate { get; set; }
     }
+
+    public class TripModel : SearchRequestModel
+    {
+        public string sid {get; set;}
+    }
