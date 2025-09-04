@@ -33,6 +33,12 @@ public partial class TripUpdate
     [Column(TypeName = "datetime")]
     public DateTime? TimeStamp { get; set; }
 
+    [Column(TypeName = "decimal(10, 7)")]
+    public decimal TripUpdatedLatitude { get; set; }
+
+    [Column(TypeName = "decimal(10, 7)")]
+    public decimal TripUpdatedLongitude { get; set; }
+
     [ForeignKey("DriverId")]
     [InverseProperty("TripUpdates")]
     public virtual User Driver { get; set; } = null!;

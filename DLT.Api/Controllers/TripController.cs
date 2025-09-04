@@ -52,4 +52,15 @@ public class TripController : BaseController
         }
         return Ok(new { message = "Trip Update added successfully" });
     }
+
+    [HttpGet("GetTripUpdateStatus/{tripSID}")]
+    public async Task<ActionResult> GetTripUpdateStatus([FromRoute] string tripSID)
+    {
+        var response = await _tripRepository.GetAllTripUpdateStatus(tripSID);
+        if (response == null)
+        {
+            return BadRequest();
+        }
+        return Ok(response);
+    }
 }

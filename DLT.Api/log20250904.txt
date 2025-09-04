@@ -1,0 +1,270 @@
+2025-09-04 11:54:55.865 +05:30 [INF] ::::In Middleware::::
+2025-09-04 11:55:11.630 +05:30 [WRN] Custom HttpStatusCodeException: A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: TCP Provider, error: 35 - An internal exception was caught)
+Common.HttpStatusCodeException: A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: TCP Provider, error: 35 - An internal exception was caught)
+   at DLT.Service.Repository.Implementation.TripRepository.GetAllTripUpdateStatus(String tripSID) in /Users/kishanchudasama/PrioxisTech/DriverLocationTrackingBackend/DLT.Service/Repository/Implementation/TripRepository.cs:line 104
+   at DLT.Api.Controllers.TripController.GetTripUpdateStatus(String tripSID) in /Users/kishanchudasama/PrioxisTech/DriverLocationTrackingBackend/DLT.Api/Controllers/TripController.cs:line 59
+   at lambda_method6(Closure, Object)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at ExceptionMiddleware.InvokeAsync(HttpContext context) in /Users/kishanchudasama/PrioxisTech/DriverLocationTrackingBackend/DLT.Api/Middlewares/ExceptionMiddleware.cs:line 23
+2025-09-04 11:55:11.693 +05:30 [INF] ::::::End of Middleware::::
+2025-09-04 11:58:16.071 +05:30 [INF] ::::In Middleware::::
+2025-09-04 11:58:31.158 +05:30 [WRN] Custom HttpStatusCodeException: A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: TCP Provider, error: 35 - An internal exception was caught)
+Common.HttpStatusCodeException: A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: TCP Provider, error: 35 - An internal exception was caught)
+   at DLT.Service.Repository.Implementation.TripRepository.GetAllTrips(Dictionary`2 parameters) in /Users/kishanchudasama/PrioxisTech/DriverLocationTrackingBackend/DLT.Service/Repository/Implementation/TripRepository.cs:line 45
+   at DLT.Api.Controllers.TripController.GetAllTrips(SearchRequestModel searchModel) in /Users/kishanchudasama/PrioxisTech/DriverLocationTrackingBackend/DLT.Api/Controllers/TripController.cs:line 25
+   at lambda_method41(Closure, Object)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at ExceptionMiddleware.InvokeAsync(HttpContext context) in /Users/kishanchudasama/PrioxisTech/DriverLocationTrackingBackend/DLT.Api/Middlewares/ExceptionMiddleware.cs:line 23
+2025-09-04 11:58:31.164 +05:30 [INF] ::::::End of Middleware::::
+2025-09-04 11:59:49.563 +05:30 [INF] ::::In Middleware::::
+2025-09-04 11:59:49.959 +05:30 [INF] ::::::End of Middleware::::
+2025-09-04 11:59:57.243 +05:30 [INF] ::::In Middleware::::
+2025-09-04 11:59:57.371 +05:30 [WRN] Custom HttpStatusCodeException: The required column 'TotalCount' was not present in the results of a 'FromSql' operation.
+Common.HttpStatusCodeException: The required column 'TotalCount' was not present in the results of a 'FromSql' operation.
+   at DLT.Service.Repository.Implementation.TripRepository.GetAllTripUpdateStatus(String tripSID) in /Users/kishanchudasama/PrioxisTech/DriverLocationTrackingBackend/DLT.Service/Repository/Implementation/TripRepository.cs:line 104
+   at DLT.Api.Controllers.TripController.GetTripUpdateStatus(String tripSID) in /Users/kishanchudasama/PrioxisTech/DriverLocationTrackingBackend/DLT.Api/Controllers/TripController.cs:line 59
+   at lambda_method6(Closure, Object)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at ExceptionMiddleware.InvokeAsync(HttpContext context) in /Users/kishanchudasama/PrioxisTech/DriverLocationTrackingBackend/DLT.Api/Middlewares/ExceptionMiddleware.cs:line 23
+2025-09-04 11:59:57.378 +05:30 [INF] ::::::End of Middleware::::
+2025-09-04 11:59:59.944 +05:30 [INF] ::::In Middleware::::
+2025-09-04 12:00:00.127 +05:30 [WRN] Custom HttpStatusCodeException: The required column 'TotalCount' was not present in the results of a 'FromSql' operation.
+Common.HttpStatusCodeException: The required column 'TotalCount' was not present in the results of a 'FromSql' operation.
+   at DLT.Service.Repository.Implementation.TripRepository.GetAllTripUpdateStatus(String tripSID) in /Users/kishanchudasama/PrioxisTech/DriverLocationTrackingBackend/DLT.Service/Repository/Implementation/TripRepository.cs:line 104
+   at DLT.Api.Controllers.TripController.GetTripUpdateStatus(String tripSID) in /Users/kishanchudasama/PrioxisTech/DriverLocationTrackingBackend/DLT.Api/Controllers/TripController.cs:line 59
+   at lambda_method6(Closure, Object)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at ExceptionMiddleware.InvokeAsync(HttpContext context) in /Users/kishanchudasama/PrioxisTech/DriverLocationTrackingBackend/DLT.Api/Middlewares/ExceptionMiddleware.cs:line 23
+2025-09-04 12:00:00.137 +05:30 [INF] ::::::End of Middleware::::
+2025-09-04 12:00:00.893 +05:30 [INF] ::::In Middleware::::
+2025-09-04 12:00:01.010 +05:30 [WRN] Custom HttpStatusCodeException: The required column 'TotalCount' was not present in the results of a 'FromSql' operation.
+Common.HttpStatusCodeException: The required column 'TotalCount' was not present in the results of a 'FromSql' operation.
+   at DLT.Service.Repository.Implementation.TripRepository.GetAllTripUpdateStatus(String tripSID) in /Users/kishanchudasama/PrioxisTech/DriverLocationTrackingBackend/DLT.Service/Repository/Implementation/TripRepository.cs:line 104
+   at DLT.Api.Controllers.TripController.GetTripUpdateStatus(String tripSID) in /Users/kishanchudasama/PrioxisTech/DriverLocationTrackingBackend/DLT.Api/Controllers/TripController.cs:line 59
+   at lambda_method6(Closure, Object)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at ExceptionMiddleware.InvokeAsync(HttpContext context) in /Users/kishanchudasama/PrioxisTech/DriverLocationTrackingBackend/DLT.Api/Middlewares/ExceptionMiddleware.cs:line 23
+2025-09-04 12:00:01.019 +05:30 [INF] ::::::End of Middleware::::
+2025-09-04 12:00:01.552 +05:30 [INF] ::::In Middleware::::
+2025-09-04 12:00:01.712 +05:30 [WRN] Custom HttpStatusCodeException: The required column 'TotalCount' was not present in the results of a 'FromSql' operation.
+Common.HttpStatusCodeException: The required column 'TotalCount' was not present in the results of a 'FromSql' operation.
+   at DLT.Service.Repository.Implementation.TripRepository.GetAllTripUpdateStatus(String tripSID) in /Users/kishanchudasama/PrioxisTech/DriverLocationTrackingBackend/DLT.Service/Repository/Implementation/TripRepository.cs:line 104
+   at DLT.Api.Controllers.TripController.GetTripUpdateStatus(String tripSID) in /Users/kishanchudasama/PrioxisTech/DriverLocationTrackingBackend/DLT.Api/Controllers/TripController.cs:line 59
+   at lambda_method6(Closure, Object)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at ExceptionMiddleware.InvokeAsync(HttpContext context) in /Users/kishanchudasama/PrioxisTech/DriverLocationTrackingBackend/DLT.Api/Middlewares/ExceptionMiddleware.cs:line 23
+2025-09-04 12:00:01.714 +05:30 [INF] ::::::End of Middleware::::
+2025-09-04 12:01:17.376 +05:30 [INF] ::::In Middleware::::
+2025-09-04 12:01:17.426 +05:30 [WRN] Custom HttpStatusCodeException: The required column 'TotalCount' was not present in the results of a 'FromSql' operation.
+Common.HttpStatusCodeException: The required column 'TotalCount' was not present in the results of a 'FromSql' operation.
+   at DLT.Service.Repository.Implementation.TripRepository.GetAllTripUpdateStatus(String tripSID) in /Users/kishanchudasama/PrioxisTech/DriverLocationTrackingBackend/DLT.Service/Repository/Implementation/TripRepository.cs:line 104
+   at DLT.Api.Controllers.TripController.GetTripUpdateStatus(String tripSID) in /Users/kishanchudasama/PrioxisTech/DriverLocationTrackingBackend/DLT.Api/Controllers/TripController.cs:line 59
+   at lambda_method6(Closure, Object)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at ExceptionMiddleware.InvokeAsync(HttpContext context) in /Users/kishanchudasama/PrioxisTech/DriverLocationTrackingBackend/DLT.Api/Middlewares/ExceptionMiddleware.cs:line 23
+2025-09-04 12:01:17.432 +05:30 [INF] ::::::End of Middleware::::
+2025-09-04 12:01:17.999 +05:30 [INF] ::::In Middleware::::
+2025-09-04 12:01:18.026 +05:30 [WRN] Custom HttpStatusCodeException: The required column 'TotalCount' was not present in the results of a 'FromSql' operation.
+Common.HttpStatusCodeException: The required column 'TotalCount' was not present in the results of a 'FromSql' operation.
+   at DLT.Service.Repository.Implementation.TripRepository.GetAllTripUpdateStatus(String tripSID) in /Users/kishanchudasama/PrioxisTech/DriverLocationTrackingBackend/DLT.Service/Repository/Implementation/TripRepository.cs:line 104
+   at DLT.Api.Controllers.TripController.GetTripUpdateStatus(String tripSID) in /Users/kishanchudasama/PrioxisTech/DriverLocationTrackingBackend/DLT.Api/Controllers/TripController.cs:line 59
+   at lambda_method6(Closure, Object)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at ExceptionMiddleware.InvokeAsync(HttpContext context) in /Users/kishanchudasama/PrioxisTech/DriverLocationTrackingBackend/DLT.Api/Middlewares/ExceptionMiddleware.cs:line 23
+2025-09-04 12:01:18.030 +05:30 [INF] ::::::End of Middleware::::
+2025-09-04 12:01:18.511 +05:30 [INF] ::::In Middleware::::
+2025-09-04 12:01:18.530 +05:30 [WRN] Custom HttpStatusCodeException: The required column 'TotalCount' was not present in the results of a 'FromSql' operation.
+Common.HttpStatusCodeException: The required column 'TotalCount' was not present in the results of a 'FromSql' operation.
+   at DLT.Service.Repository.Implementation.TripRepository.GetAllTripUpdateStatus(String tripSID) in /Users/kishanchudasama/PrioxisTech/DriverLocationTrackingBackend/DLT.Service/Repository/Implementation/TripRepository.cs:line 104
+   at DLT.Api.Controllers.TripController.GetTripUpdateStatus(String tripSID) in /Users/kishanchudasama/PrioxisTech/DriverLocationTrackingBackend/DLT.Api/Controllers/TripController.cs:line 59
+   at lambda_method6(Closure, Object)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at ExceptionMiddleware.InvokeAsync(HttpContext context) in /Users/kishanchudasama/PrioxisTech/DriverLocationTrackingBackend/DLT.Api/Middlewares/ExceptionMiddleware.cs:line 23
+2025-09-04 12:01:18.534 +05:30 [INF] ::::::End of Middleware::::
+2025-09-04 12:01:18.982 +05:30 [INF] ::::In Middleware::::
+2025-09-04 12:01:19.081 +05:30 [WRN] Custom HttpStatusCodeException: The required column 'TotalCount' was not present in the results of a 'FromSql' operation.
+Common.HttpStatusCodeException: The required column 'TotalCount' was not present in the results of a 'FromSql' operation.
+   at DLT.Service.Repository.Implementation.TripRepository.GetAllTripUpdateStatus(String tripSID) in /Users/kishanchudasama/PrioxisTech/DriverLocationTrackingBackend/DLT.Service/Repository/Implementation/TripRepository.cs:line 104
+   at DLT.Api.Controllers.TripController.GetTripUpdateStatus(String tripSID) in /Users/kishanchudasama/PrioxisTech/DriverLocationTrackingBackend/DLT.Api/Controllers/TripController.cs:line 59
+   at lambda_method6(Closure, Object)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at ExceptionMiddleware.InvokeAsync(HttpContext context) in /Users/kishanchudasama/PrioxisTech/DriverLocationTrackingBackend/DLT.Api/Middlewares/ExceptionMiddleware.cs:line 23
+2025-09-04 12:01:19.086 +05:30 [INF] ::::::End of Middleware::::
+2025-09-04 12:08:44.733 +05:30 [INF] ::::In Middleware::::
+2025-09-04 12:08:45.664 +05:30 [INF] ::::::End of Middleware::::
+2025-09-04 12:09:48.658 +05:30 [INF] ::::In Middleware::::
+2025-09-04 12:09:49.715 +05:30 [INF] ::::::End of Middleware::::
+2025-09-04 12:14:58.386 +05:30 [INF] ::::In Middleware::::
+2025-09-04 12:14:59.365 +05:30 [INF] ::::::End of Middleware::::
+2025-09-04 12:27:02.970 +05:30 [INF] ::::In Middleware::::
+2025-09-04 12:27:03.398 +05:30 [INF] ::::::End of Middleware::::
+2025-09-04 12:27:10.104 +05:30 [INF] ::::In Middleware::::
+2025-09-04 12:27:10.161 +05:30 [INF] ::::::End of Middleware::::
+2025-09-04 12:27:20.104 +05:30 [INF] ::::In Middleware::::
+2025-09-04 12:27:20.155 +05:30 [INF] ::::::End of Middleware::::
+2025-09-04 12:27:30.102 +05:30 [INF] ::::In Middleware::::
+2025-09-04 12:27:30.190 +05:30 [INF] ::::::End of Middleware::::
+2025-09-04 12:27:40.104 +05:30 [INF] ::::In Middleware::::
+2025-09-04 12:27:40.214 +05:30 [INF] ::::::End of Middleware::::
+2025-09-04 12:27:50.105 +05:30 [INF] ::::In Middleware::::
+2025-09-04 12:27:50.158 +05:30 [INF] ::::::End of Middleware::::
+2025-09-04 12:28:00.103 +05:30 [INF] ::::In Middleware::::
+2025-09-04 12:28:00.140 +05:30 [INF] ::::::End of Middleware::::
+2025-09-04 12:28:09.650 +05:30 [INF] ::::In Middleware::::
+2025-09-04 12:28:09.666 +05:30 [INF] ::::::End of Middleware::::
+2025-09-04 12:28:14.377 +05:30 [INF] ::::In Middleware::::
+2025-09-04 12:28:14.415 +05:30 [INF] ::::::End of Middleware::::
+2025-09-04 12:28:24.375 +05:30 [INF] ::::In Middleware::::
+2025-09-04 12:28:24.399 +05:30 [INF] ::::::End of Middleware::::
+2025-09-04 12:28:34.378 +05:30 [INF] ::::In Middleware::::
+2025-09-04 12:28:34.415 +05:30 [INF] ::::::End of Middleware::::
+2025-09-04 12:28:44.377 +05:30 [INF] ::::In Middleware::::
+2025-09-04 12:28:44.429 +05:30 [INF] ::::::End of Middleware::::
+2025-09-04 12:28:54.377 +05:30 [INF] ::::In Middleware::::
+2025-09-04 12:28:54.474 +05:30 [INF] ::::::End of Middleware::::
+2025-09-04 12:29:04.380 +05:30 [INF] ::::In Middleware::::
+2025-09-04 12:29:04.421 +05:30 [INF] ::::::End of Middleware::::
+2025-09-04 12:29:14.377 +05:30 [INF] ::::In Middleware::::
+2025-09-04 12:29:14.437 +05:30 [INF] ::::::End of Middleware::::
+2025-09-04 12:29:24.377 +05:30 [INF] ::::In Middleware::::
+2025-09-04 12:29:24.467 +05:30 [INF] ::::::End of Middleware::::
+2025-09-04 12:29:34.377 +05:30 [INF] ::::In Middleware::::
+2025-09-04 12:29:34.404 +05:30 [INF] ::::::End of Middleware::::
+2025-09-04 12:29:44.376 +05:30 [INF] ::::In Middleware::::
+2025-09-04 12:29:44.431 +05:30 [INF] ::::::End of Middleware::::
+2025-09-04 12:29:54.377 +05:30 [INF] ::::In Middleware::::
+2025-09-04 12:29:54.456 +05:30 [INF] ::::::End of Middleware::::
+2025-09-04 12:30:04.376 +05:30 [INF] ::::In Middleware::::
+2025-09-04 12:30:04.416 +05:30 [INF] ::::::End of Middleware::::
+2025-09-04 12:30:14.377 +05:30 [INF] ::::In Middleware::::
+2025-09-04 12:30:14.427 +05:30 [INF] ::::::End of Middleware::::
+2025-09-04 12:30:24.377 +05:30 [INF] ::::In Middleware::::
+2025-09-04 12:30:24.470 +05:30 [INF] ::::::End of Middleware::::
+2025-09-04 12:30:34.377 +05:30 [INF] ::::In Middleware::::
+2025-09-04 12:30:34.409 +05:30 [INF] ::::::End of Middleware::::
+2025-09-04 12:30:44.744 +05:30 [INF] ::::In Middleware::::
+2025-09-04 12:30:44.842 +05:30 [INF] ::::::End of Middleware::::
+2025-09-04 12:30:54.746 +05:30 [INF] ::::In Middleware::::
+2025-09-04 12:30:54.882 +05:30 [INF] ::::::End of Middleware::::
+2025-09-04 12:31:04.744 +05:30 [INF] ::::In Middleware::::
+2025-09-04 12:31:04.774 +05:30 [INF] ::::::End of Middleware::::
+2025-09-04 12:31:14.747 +05:30 [INF] ::::In Middleware::::
+2025-09-04 12:31:14.773 +05:30 [INF] ::::::End of Middleware::::
+2025-09-04 12:31:24.745 +05:30 [INF] ::::In Middleware::::
+2025-09-04 12:31:24.769 +05:30 [INF] ::::::End of Middleware::::
+2025-09-04 12:31:34.745 +05:30 [INF] ::::In Middleware::::
+2025-09-04 12:31:34.806 +05:30 [INF] ::::::End of Middleware::::
+2025-09-04 12:32:17.749 +05:30 [INF] ::::In Middleware::::
+2025-09-04 12:32:17.815 +05:30 [INF] ::::::End of Middleware::::
+2025-09-04 12:32:54.054 +05:30 [INF] ::::In Middleware::::
+2025-09-04 12:32:54.168 +05:30 [INF] ::::::End of Middleware::::
+2025-09-04 12:45:40.080 +05:30 [INF] ::::In Middleware::::
+2025-09-04 12:45:40.190 +05:30 [INF] ::::::End of Middleware::::
+2025-09-04 12:52:17.586 +05:30 [INF] ::::In Middleware::::
+2025-09-04 12:52:17.878 +05:30 [INF] ::::::End of Middleware::::
+2025-09-04 12:53:31.534 +05:30 [INF] ::::In Middleware::::
+2025-09-04 12:53:32.608 +05:30 [INF] ::::::End of Middleware::::
+2025-09-04 12:59:59.523 +05:30 [INF] ::::In Middleware::::
+2025-09-04 12:59:59.772 +05:30 [INF] ::::::End of Middleware::::
+2025-09-04 14:36:17.763 +05:30 [INF] ::::In Middleware::::
+2025-09-04 14:36:17.885 +05:30 [INF] ::::::End of Middleware::::
+2025-09-04 14:48:57.711 +05:30 [INF] ::::In Middleware::::
+2025-09-04 14:48:58.784 +05:30 [INF] ::::::End of Middleware::::
+2025-09-04 14:50:27.325 +05:30 [INF] ::::In Middleware::::
+2025-09-04 14:50:27.853 +05:30 [INF] ::::::End of Middleware::::
+2025-09-04 14:52:12.462 +05:30 [INF] ::::In Middleware::::
+2025-09-04 14:52:13.535 +05:30 [INF] ::::::End of Middleware::::
+2025-09-04 14:52:37.126 +05:30 [INF] ::::In Middleware::::
+2025-09-04 14:52:37.668 +05:30 [INF] ::::::End of Middleware::::
+2025-09-04 14:52:41.984 +05:30 [INF] ::::In Middleware::::
+2025-09-04 14:52:42.113 +05:30 [INF] ::::::End of Middleware::::
