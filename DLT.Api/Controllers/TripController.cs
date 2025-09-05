@@ -107,4 +107,15 @@ public class TripController : BaseController
         }
         return Ok(new { message = "Trip Deleted successfully" });
     }
+
+    [HttpPost("UpdateTrip/{tripSID}")]
+    public async Task<ActionResult> UpdateTrip([FromRoute] string tripSID, [FromBody] TripRequestModel request)
+    {
+        var success = await _tripRepository.UpdateTrip(tripSID, request);
+        if (!success)
+        {
+            return BadRequest();
+        }
+        return Ok(new { message = "Trip Updated successfully" });
+    }
 }

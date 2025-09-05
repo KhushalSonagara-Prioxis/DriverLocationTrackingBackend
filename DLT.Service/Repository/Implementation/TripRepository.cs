@@ -51,7 +51,7 @@ public class TripRepository : ITripRepository
 
     #region Create Trip
 
-public async Task<bool> CreateTrip(TripRequestModel model)
+    public async Task<bool> CreateTrip(TripRequestModel model)
     {
         try
         {
@@ -325,4 +325,65 @@ public async Task<bool> CreateTrip(TripRequestModel model)
     }
 
     #endregion
+
+    #region UpdateTrip
+
+    public async Task<bool> UpdateTrip(string tripSID, TripRequestModel model)
+    {
+        try
+        {
+            var t = await _unitOfWork.GetRepository<Trip>().SingleOrDefaultAsync(t => t.TripSid == tripSID);
+            if (t == null)
+            {
+                throw new HttpStatusCodeException((int)StatusCode.NotFound, "No results found");
+            }
+            if (t.TripStatus != (int)StatusEnum.Pending)
+            {
+                throw new HttpStatusCodeException((int)StatusCode.BadRequest, "You cannot Update The Trip");
+            }
+            var sLocation = await _unitOfWork.GetRepository<Location>()
+                .SingleOrDefaultAsync(l => l.LocationSid == model.StartLocationSID);
+            if (sLocation == null)
+            {
+                throw new HttpStatusCodeException((int)StatusCode.BadRequest,"Start location not found");
+            }
+            var eLocation = await _unitOfWork.GetRepository<Location>()
+                .SingleOrDefaultAsync(l => l.LocationSid == model.ToLocationSID);
+            if (eLocation == null)
+            {
+                throw new HttpStatusCodeException((int)StatusCode.BadRequest, "To location not found");
+            }
+
+            var Driver = await _unitOfWork.GetRepository<User>()
+                .SingleOrDefaultAsync(u => u.UserSid == model.DriverSID);
+            if (Driver == null)
+            {
+                throw new HttpStatusCodeException((int)StatusCode.BadRequest, "Driver not found");
+            }
+            var admin = await _unitOfWork.GetRepository<User>().SingleOrDefaultAsync(u => u.UserSid == model.UserSID);
+            t.StartLatitude = model.StartLatitude;
+            t.StartLongitude = model.StartLongitude;
+            t.ToLatitude = model.ToLatitude;
+            t.ToLongitude = model.ToLongitude;
+            t.StartLocation = sLocation.LocationId;
+            t.ToLocation = eLocation.LocationId;
+            t.DriverId = Driver.UserId;
+            t.LastModifiedBy = admin.UserId;
+            t.LastModifiedDate = DateTime.Now;
+            _unitOfWork.GetRepository<Trip>().Update(t);
+            await _unitOfWork.CommitAsync();
+            return true;
+        }
+        catch (HttpStatusCodeException exception)
+        {
+            throw;
+        }
+        catch (Exception exception)
+        {
+            throw new HttpStatusCodeException((int)StatusCode.InternalServerError, exception.Message);
+        }
+    }
+
+    #endregion
+    
 }
