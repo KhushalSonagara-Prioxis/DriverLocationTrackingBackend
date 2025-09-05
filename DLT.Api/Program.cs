@@ -22,7 +22,8 @@ public class Program
 
         builder.Services.AddScoped<IDriverRepository, DriverRepository>();
         builder.Services.AddScoped<ITripRepository, TripRepository>();
-
+        builder.Services.AddScoped<ILocationRepository, LocationRepository>();
+        
         // Connection String
         var connectionString = builder.Configuration.GetConnectionString("DBConnection");
 

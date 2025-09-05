@@ -12,4 +12,5 @@ public interface ITripRepository
     Task<List<TripUpdateResponseModel>>  GetAllTripUpdateStatus(string tripSID);
     Task<bool> TripsStart(string tripSID);
     Task<bool> TripsEnd(string tripSID);
+    Task<bool> DeleteTrip(string tripSID);
 }

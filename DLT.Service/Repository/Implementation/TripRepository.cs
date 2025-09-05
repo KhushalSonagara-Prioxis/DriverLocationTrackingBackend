@@ -22,6 +22,7 @@ public class TripRepository : ITripRepository
         _spContext = spContext;
         _unitOfWork = unitOfWork;
     }
+    #region GetAll trips
     public async Task<Page> GetAllTrips(Dictionary<string, object> parameters)
     {
         try
@@ -32,7 +33,7 @@ public class TripRepository : ITripRepository
             var res = await _spContext.ExecutreStoreProcedureResultList(query, param);
             if (res == null)
             {
-                throw new HttpStatusCodeException((int)StatusCode.NotFound, "No results found");
+                throw new HttpStatusCodeException((int)StatusCode.BadRequest, "No results found");
             }
 
             return res;
@@ -46,8 +47,11 @@ public class TripRepository : ITripRepository
             throw new HttpStatusCodeException((int)StatusCode.InternalServerError, exception.Message);
         }
     }
+#endregion
 
-    public async Task<bool> CreateTrip(TripRequestModel model)
+    #region Create Trip
+
+public async Task<bool> CreateTrip(TripRequestModel model)
     {
         try
         {
@@ -100,6 +104,9 @@ public class TripRepository : ITripRepository
         }
     }
 
+#endregion
+    
+    #region AddTripUpdate
     public async Task<bool> AddTripUpdate(string TripSID, TripUpdateStatusRequestModel request)
     {
         try
@@ -137,7 +144,9 @@ public class TripRepository : ITripRepository
             throw new HttpStatusCodeException((int)StatusCode.InternalServerError, exception.Message);
         }
     }
-
+    #endregion
+    
+    #region TripStart
     public async Task<bool> TripsStart(string tripSID)
     {
         try
@@ -195,6 +204,9 @@ public class TripRepository : ITripRepository
             throw new HttpStatusCodeException((int)StatusCode.InternalServerError, exception.Message);
         }
     }
+    #endregion
+    
+    #region TripEnd
     public async Task<bool> TripsEnd(string tripSID)
     {
         try
@@ -251,7 +263,9 @@ public class TripRepository : ITripRepository
             throw new HttpStatusCodeException((int)StatusCode.InternalServerError, exception.Message);
         }
     }
-
+    #endregion
+    
+    #region GetAllTripUpdateStatus
     public async Task<List<TripUpdateResponseModel>> GetAllTripUpdateStatus(string tripSID)
     {
         try
@@ -274,7 +288,41 @@ public class TripRepository : ITripRepository
         {
             throw new HttpStatusCodeException((int)StatusCode.InternalServerError, exception.Message);
         }
-
-        
     }
+    #endregion
+
+    #region DeteleteTrip
+
+    public async Task<bool> DeleteTrip(string tripSID)
+    {
+        try
+        {
+            var trip = await _unitOfWork.GetRepository<Trip>()
+                .SingleOrDefaultAsync(t => t.TripSid == tripSID);
+            if (trip == null)
+            {
+                throw new HttpStatusCodeException((int)StatusCode.NotFound, "No results found");
+            }
+
+            if (trip.TripStatus != (int)StatusEnum.Pending)
+            {
+                throw new HttpStatusCodeException((int)StatusCode.NotFound, "Can not Delete the Trip");
+            }
+            
+            trip.Status = (int)StatusEnum.Delete;
+            _unitOfWork.GetRepository<Trip>().Update(trip);
+            await _unitOfWork.CommitAsync();
+            return true;
+        }
+        catch (HttpStatusCodeException exception)
+        {
+            throw;
+        }
+        catch (Exception exception)
+        {
+            throw new HttpStatusCodeException((int)StatusCode.InternalServerError, exception.Message);
+        }
+    }
+
+    #endregion
 }

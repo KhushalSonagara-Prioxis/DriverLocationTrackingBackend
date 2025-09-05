@@ -22,7 +22,7 @@ public class DriverRepository : IDriverRepository
         _spContext = spContext;
         _unitOfWork = unitOfWork;
     }
-
+    #region UpdateDriverCurrectLocationAsync
     public async Task<bool> UpdateDriverCurrectLocationAsync(string tripSID, DriverCurrentLocationRequestModel driverCurrentLocation)
     {
         try
@@ -59,7 +59,9 @@ public class DriverRepository : IDriverRepository
             throw new HttpStatusCodeException((int)StatusCode.InternalServerError, exception);
         }
     }
-
+    #endregion
+    
+    #region GetDriverCurrectLocationAsync
     public async Task<DriverCurrectLocationResponseModel> GetDriverCurrectLocationAsync(string tripSID)
     {
         try
@@ -85,4 +87,5 @@ public class DriverRepository : IDriverRepository
             throw new HttpStatusCodeException((int)StatusCode.InternalServerError, exception);
         }
     }
+    #endregion
 }

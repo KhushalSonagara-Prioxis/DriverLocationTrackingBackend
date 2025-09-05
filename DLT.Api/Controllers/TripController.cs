@@ -31,7 +31,7 @@ public class TripController : BaseController
 
         if (response.Count == 0)
         {
-            throw new HttpStatusCodeException((int)Common.StatusCode.NotFound, "No results found");
+            throw new HttpStatusCodeException((int)Common.StatusCode.BadRequest, "No results found");
         }
         list.Result = response;
         if (response == null || !response.Any())
@@ -95,5 +95,16 @@ public class TripController : BaseController
             return BadRequest();
         }
         return Ok(new { message = "Trip Ended successfully" });
+    }
+
+    [HttpDelete("DeleteTrip/{tripSID}")]
+    public async Task<ActionResult> DeleteTrip([FromRoute] string tripSID)
+    {
+        var success = await _tripRepository.DeleteTrip(tripSID);
+        if (!success)
+        {
+            return BadRequest();
+        }
+        return Ok(new { message = "Trip Deleted successfully" });
     }
 }
