@@ -7,4 +7,5 @@ public interface IDriverRepository
 {
     Task<bool> UpdateDriverCurrectLocationAsync(string TripSID, DriverCurrentLocationRequestModel driverCurrentLocation);
     Task<DriverCurrectLocationResponseModel> GetDriverCurrectLocationAsync(string TripSID);
+    Task<List<DriverResponseModel>> GetAllDrivers();
 }

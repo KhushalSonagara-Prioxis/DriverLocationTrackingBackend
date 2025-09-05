@@ -36,4 +36,15 @@ public class DriverController : BaseController
         }
         return Ok(details);
     }
+
+    [HttpGet("GetDrivers")]
+    public async Task<IActionResult> GetDrivers()
+    {
+        var res = await _repository.GetAllDrivers();
+        if (res == null)
+        {
+            return NotFound();
+        }
+        return Ok(res);
+    }
 }

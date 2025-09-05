@@ -1,6 +1,7 @@
 using Common;
 using DLT.Models.Models.DriverLocationTracking;
 using DLT.Service.Repository.Interface;
+using Microsoft.EntityFrameworkCore;
 using Models.Models.SpDbContext;
 using Models.RequestModel;
 using Models.ResponsetModel;
@@ -77,6 +78,36 @@ public class DriverRepository : IDriverRepository
                 throw new HttpStatusCodeException((int)StatusCode.NotFound, "Trip not found");
             }
             return tripDetail;
+        }
+        catch (HttpStatusCodeException exception)
+        {
+            throw;
+        }
+        catch (Exception exception)
+        {
+            throw new HttpStatusCodeException((int)StatusCode.InternalServerError, exception);
+        }
+    }
+    #endregion
+    
+    #region GetAllDrivers
+
+    public async Task<List<DriverResponseModel>> GetAllDrivers()
+    {
+        try
+        {
+            var drivers = await _context.Users.Where(d => d.Role == (int)StatusEnum.Driver).ToListAsync();
+            if (drivers == null || !drivers.Any())
+            {
+                throw new HttpStatusCodeException((int)StatusCode.NotFound, "Driver not found");
+            }
+            List<DriverResponseModel> res =
+                JsonConvert.DeserializeObject<List<DriverResponseModel>>(JsonConvert.SerializeObject(drivers));
+            if (res == null && !drivers.Any())
+            {
+                throw new HttpStatusCodeException((int)StatusCode.NotFound, "Driver not found");
+            }
+            return res;
         }
         catch (HttpStatusCodeException exception)
         {
