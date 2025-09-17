@@ -268,3 +268,388 @@ Common.HttpStatusCodeException: The required column 'TotalCount' was not present
 2025-09-04 14:52:37.668 +05:30 [INF] ::::::End of Middleware::::
 2025-09-04 14:52:41.984 +05:30 [INF] ::::In Middleware::::
 2025-09-04 14:52:42.113 +05:30 [INF] ::::::End of Middleware::::
+2025-09-04 15:02:14.791 +05:30 [INF] ::::In Middleware::::
+2025-09-04 15:02:15.871 +05:30 [INF] ::::::End of Middleware::::
+2025-09-04 15:04:49.856 +05:30 [INF] ::::In Middleware::::
+2025-09-04 15:04:49.994 +05:30 [WRN] Custom HttpStatusCodeException: Ambiguous column name 'UserSID'.
+Common.HttpStatusCodeException: Ambiguous column name 'UserSID'.
+   at Service.RepositoryFactory.SpRepository.ExecutreStoreProcedureResultList(DriverLocationTrackingSpContext catalogDbContext, String sqlQuery, Object[] param) in /Users/kishanchudasama/PrioxisTech/DriverLocationTrackingBackend/DLT.Service/RepositoryFactory/SpRepository.cs:line 158
+   at DLT.Service.Repository.Implementation.TripRepository.GetAllTrips(Dictionary`2 parameters) in /Users/kishanchudasama/PrioxisTech/DriverLocationTrackingBackend/DLT.Service/Repository/Implementation/TripRepository.cs:line 32
+   at DLT.Api.Controllers.TripController.GetAllTrips(SearchRequestModel searchModel) in /Users/kishanchudasama/PrioxisTech/DriverLocationTrackingBackend/DLT.Api/Controllers/TripController.cs:line 25
+   at lambda_method6(Closure, Object)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at ExceptionMiddleware.InvokeAsync(HttpContext context) in /Users/kishanchudasama/PrioxisTech/DriverLocationTrackingBackend/DLT.Api/Middlewares/ExceptionMiddleware.cs:line 23
+2025-09-04 15:04:50.031 +05:30 [INF] ::::::End of Middleware::::
+2025-09-04 15:05:28.745 +05:30 [INF] ::::In Middleware::::
+2025-09-04 15:05:28.814 +05:30 [WRN] Custom HttpStatusCodeException: Ambiguous column name 'UserSID'.
+Common.HttpStatusCodeException: Ambiguous column name 'UserSID'.
+   at Service.RepositoryFactory.SpRepository.ExecutreStoreProcedureResultList(DriverLocationTrackingSpContext catalogDbContext, String sqlQuery, Object[] param) in /Users/kishanchudasama/PrioxisTech/DriverLocationTrackingBackend/DLT.Service/RepositoryFactory/SpRepository.cs:line 158
+   at DLT.Service.Repository.Implementation.TripRepository.GetAllTrips(Dictionary`2 parameters) in /Users/kishanchudasama/PrioxisTech/DriverLocationTrackingBackend/DLT.Service/Repository/Implementation/TripRepository.cs:line 32
+   at DLT.Api.Controllers.TripController.GetAllTrips(SearchRequestModel searchModel) in /Users/kishanchudasama/PrioxisTech/DriverLocationTrackingBackend/DLT.Api/Controllers/TripController.cs:line 25
+   at lambda_method6(Closure, Object)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at ExceptionMiddleware.InvokeAsync(HttpContext context) in /Users/kishanchudasama/PrioxisTech/DriverLocationTrackingBackend/DLT.Api/Middlewares/ExceptionMiddleware.cs:line 23
+2025-09-04 15:05:28.819 +05:30 [INF] ::::::End of Middleware::::
+2025-09-04 15:06:24.275 +05:30 [INF] ::::In Middleware::::
+2025-09-04 15:24:16.200 +05:30 [INF] ::::In Middleware::::
+2025-09-04 15:24:17.271 +05:30 [INF] ::::::End of Middleware::::
+2025-09-04 15:24:45.819 +05:30 [INF] ::::In Middleware::::
+2025-09-04 15:24:45.994 +05:30 [INF] ::::::End of Middleware::::
+2025-09-04 15:25:12.650 +05:30 [INF] ::::In Middleware::::
+2025-09-04 15:27:49.740 +05:30 [INF] ::::In Middleware::::
+2025-09-04 15:28:00.360 +05:30 [WRN] Custom HttpStatusCodeException: Incorrect syntax near '@p1'.
+Common.HttpStatusCodeException: Incorrect syntax near '@p1'.
+   at DLT.Service.Repository.Implementation.TripRepository.GetAllTrips(Dictionary`2 parameters, String sid) in /Users/kishanchudasama/PrioxisTech/DriverLocationTrackingBackend/DLT.Service/Repository/Implementation/TripRepository.cs:line 46
+   at DLT.Api.Controllers.TripController.GetAllTrips(TripModel searchModel) in /Users/kishanchudasama/PrioxisTech/DriverLocationTrackingBackend/DLT.Api/Controllers/TripController.cs:line 25
+   at lambda_method6(Closure, Object)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at ExceptionMiddleware.InvokeAsync(HttpContext context) in /Users/kishanchudasama/PrioxisTech/DriverLocationTrackingBackend/DLT.Api/Middlewares/ExceptionMiddleware.cs:line 23
+2025-09-04 15:28:00.427 +05:30 [INF] ::::::End of Middleware::::
+2025-09-04 15:28:52.242 +05:30 [INF] ::::In Middleware::::
+2025-09-04 15:50:15.621 +05:30 [INF] ::::In Middleware::::
+2025-09-04 15:51:15.210 +05:30 [INF] ::::In Middleware::::
+2025-09-04 15:51:36.547 +05:30 [WRN] Custom HttpStatusCodeException: Data is Null. This method or property cannot be called on Null values.
+Common.HttpStatusCodeException: Data is Null. This method or property cannot be called on Null values.
+   at DLT.Service.Repository.Implementation.TripRepository.GetAllTrips(Dictionary`2 parameters, String sid) in /Users/kishanchudasama/PrioxisTech/DriverLocationTrackingBackend/DLT.Service/Repository/Implementation/TripRepository.cs:line 46
+   at DLT.Api.Controllers.TripController.GetAllTrips(TripModel searchModel) in /Users/kishanchudasama/PrioxisTech/DriverLocationTrackingBackend/DLT.Api/Controllers/TripController.cs:line 25
+   at lambda_method6(Closure, Object)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at ExceptionMiddleware.InvokeAsync(HttpContext context) in /Users/kishanchudasama/PrioxisTech/DriverLocationTrackingBackend/DLT.Api/Middlewares/ExceptionMiddleware.cs:line 23
+2025-09-04 15:51:36.610 +05:30 [INF] ::::::End of Middleware::::
+2025-09-04 15:51:46.762 +05:30 [INF] ::::In Middleware::::
+2025-09-04 15:53:13.729 +05:30 [WRN] Custom HttpStatusCodeException: Data is Null. This method or property cannot be called on Null values.
+Common.HttpStatusCodeException: Data is Null. This method or property cannot be called on Null values.
+   at DLT.Service.Repository.Implementation.TripRepository.GetAllTrips(Dictionary`2 parameters, String sid) in /Users/kishanchudasama/PrioxisTech/DriverLocationTrackingBackend/DLT.Service/Repository/Implementation/TripRepository.cs:line 46
+   at DLT.Api.Controllers.TripController.GetAllTrips(TripModel searchModel) in /Users/kishanchudasama/PrioxisTech/DriverLocationTrackingBackend/DLT.Api/Controllers/TripController.cs:line 25
+   at lambda_method6(Closure, Object)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at ExceptionMiddleware.InvokeAsync(HttpContext context) in /Users/kishanchudasama/PrioxisTech/DriverLocationTrackingBackend/DLT.Api/Middlewares/ExceptionMiddleware.cs:line 23
+2025-09-04 15:53:13.731 +05:30 [INF] ::::::End of Middleware::::
+2025-09-04 15:53:26.663 +05:30 [INF] ::::In Middleware::::
+2025-09-04 15:54:13.994 +05:30 [WRN] Custom HttpStatusCodeException: Data is Null. This method or property cannot be called on Null values.
+Common.HttpStatusCodeException: Data is Null. This method or property cannot be called on Null values.
+   at DLT.Service.Repository.Implementation.TripRepository.GetAllTrips(Dictionary`2 parameters, String sid) in /Users/kishanchudasama/PrioxisTech/DriverLocationTrackingBackend/DLT.Service/Repository/Implementation/TripRepository.cs:line 46
+   at DLT.Api.Controllers.TripController.GetAllTrips(TripModel searchModel) in /Users/kishanchudasama/PrioxisTech/DriverLocationTrackingBackend/DLT.Api/Controllers/TripController.cs:line 25
+   at lambda_method6(Closure, Object)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at ExceptionMiddleware.InvokeAsync(HttpContext context) in /Users/kishanchudasama/PrioxisTech/DriverLocationTrackingBackend/DLT.Api/Middlewares/ExceptionMiddleware.cs:line 23
+2025-09-04 15:54:13.995 +05:30 [INF] ::::::End of Middleware::::
+2025-09-04 15:55:00.413 +05:30 [INF] ::::In Middleware::::
+2025-09-04 15:58:42.098 +05:30 [WRN] Custom HttpStatusCodeException: Data is Null. This method or property cannot be called on Null values.
+Common.HttpStatusCodeException: Data is Null. This method or property cannot be called on Null values.
+   at DLT.Service.Repository.Implementation.TripRepository.GetAllTrips(Dictionary`2 parameters, String sid) in /Users/kishanchudasama/PrioxisTech/DriverLocationTrackingBackend/DLT.Service/Repository/Implementation/TripRepository.cs:line 46
+   at DLT.Api.Controllers.TripController.GetAllTrips(TripModel searchModel) in /Users/kishanchudasama/PrioxisTech/DriverLocationTrackingBackend/DLT.Api/Controllers/TripController.cs:line 25
+   at lambda_method6(Closure, Object)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at ExceptionMiddleware.InvokeAsync(HttpContext context) in /Users/kishanchudasama/PrioxisTech/DriverLocationTrackingBackend/DLT.Api/Middlewares/ExceptionMiddleware.cs:line 23
+2025-09-04 15:58:42.100 +05:30 [INF] ::::::End of Middleware::::
+2025-09-04 15:59:53.064 +05:30 [INF] ::::In Middleware::::
+2025-09-04 16:00:24.360 +05:30 [WRN] Custom HttpStatusCodeException: Data is Null. This method or property cannot be called on Null values.
+Common.HttpStatusCodeException: Data is Null. This method or property cannot be called on Null values.
+   at DLT.Service.Repository.Implementation.TripRepository.GetAllTrips(Dictionary`2 parameters, String sid) in /Users/kishanchudasama/PrioxisTech/DriverLocationTrackingBackend/DLT.Service/Repository/Implementation/TripRepository.cs:line 46
+   at DLT.Api.Controllers.TripController.GetAllTrips(TripModel searchModel) in /Users/kishanchudasama/PrioxisTech/DriverLocationTrackingBackend/DLT.Api/Controllers/TripController.cs:line 25
+   at lambda_method6(Closure, Object)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at ExceptionMiddleware.InvokeAsync(HttpContext context) in /Users/kishanchudasama/PrioxisTech/DriverLocationTrackingBackend/DLT.Api/Middlewares/ExceptionMiddleware.cs:line 23
+2025-09-04 16:00:24.420 +05:30 [INF] ::::::End of Middleware::::
+2025-09-04 16:00:39.080 +05:30 [INF] ::::In Middleware::::
+2025-09-04 16:00:39.143 +05:30 [INF] ::::::End of Middleware::::
+2025-09-04 16:00:42.559 +05:30 [INF] ::::In Middleware::::
+2025-09-04 16:00:42.568 +05:30 [INF] ::::::End of Middleware::::
+2025-09-04 16:00:58.013 +05:30 [INF] ::::In Middleware::::
+2025-09-04 16:01:31.281 +05:30 [WRN] Custom HttpStatusCodeException: Data is Null. This method or property cannot be called on Null values.
+Common.HttpStatusCodeException: Data is Null. This method or property cannot be called on Null values.
+   at DLT.Service.Repository.Implementation.TripRepository.GetAllTrips(Dictionary`2 parameters, String sid) in /Users/kishanchudasama/PrioxisTech/DriverLocationTrackingBackend/DLT.Service/Repository/Implementation/TripRepository.cs:line 46
+   at DLT.Api.Controllers.TripController.GetAllTrips(TripModel searchModel) in /Users/kishanchudasama/PrioxisTech/DriverLocationTrackingBackend/DLT.Api/Controllers/TripController.cs:line 25
+   at lambda_method6(Closure, Object)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at ExceptionMiddleware.InvokeAsync(HttpContext context) in /Users/kishanchudasama/PrioxisTech/DriverLocationTrackingBackend/DLT.Api/Middlewares/ExceptionMiddleware.cs:line 23
+2025-09-04 16:01:31.283 +05:30 [INF] ::::::End of Middleware::::
+2025-09-04 16:03:13.946 +05:30 [INF] ::::In Middleware::::
+2025-09-04 16:07:17.906 +05:30 [WRN] Custom HttpStatusCodeException: Data is Null. This method or property cannot be called on Null values.
+Common.HttpStatusCodeException: Data is Null. This method or property cannot be called on Null values.
+   at DLT.Service.Repository.Implementation.TripRepository.GetAllTrips(Dictionary`2 parameters, String sid) in /Users/kishanchudasama/PrioxisTech/DriverLocationTrackingBackend/DLT.Service/Repository/Implementation/TripRepository.cs:line 46
+   at DLT.Api.Controllers.TripController.GetAllTrips(TripModel searchModel) in /Users/kishanchudasama/PrioxisTech/DriverLocationTrackingBackend/DLT.Api/Controllers/TripController.cs:line 25
+   at lambda_method6(Closure, Object)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at ExceptionMiddleware.InvokeAsync(HttpContext context) in /Users/kishanchudasama/PrioxisTech/DriverLocationTrackingBackend/DLT.Api/Middlewares/ExceptionMiddleware.cs:line 23
+2025-09-04 16:07:17.973 +05:30 [INF] ::::::End of Middleware::::
+2025-09-04 16:07:22.652 +05:30 [INF] ::::In Middleware::::
+2025-09-04 16:07:29.139 +05:30 [INF] ::::::End of Middleware::::
+2025-09-04 16:10:43.172 +05:30 [INF] ::::In Middleware::::
+2025-09-04 16:21:54.124 +05:30 [WRN] Custom HttpStatusCodeException: Data is Null. This method or property cannot be called on Null values.
+Common.HttpStatusCodeException: Data is Null. This method or property cannot be called on Null values.
+   at DLT.Service.Repository.Implementation.TripRepository.GetAllTrips(Dictionary`2 parameters, String sid) in /Users/kishanchudasama/PrioxisTech/DriverLocationTrackingBackend/DLT.Service/Repository/Implementation/TripRepository.cs:line 46
+   at DLT.Api.Controllers.TripController.GetAllTrips(TripModel searchModel) in /Users/kishanchudasama/PrioxisTech/DriverLocationTrackingBackend/DLT.Api/Controllers/TripController.cs:line 25
+   at lambda_method6(Closure, Object)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at ExceptionMiddleware.InvokeAsync(HttpContext context) in /Users/kishanchudasama/PrioxisTech/DriverLocationTrackingBackend/DLT.Api/Middlewares/ExceptionMiddleware.cs:line 23
+2025-09-04 16:21:54.127 +05:30 [INF] ::::::End of Middleware::::
+2025-09-04 16:21:57.925 +05:30 [INF] ::::In Middleware::::
+2025-09-04 16:41:53.623 +05:30 [INF] ::::In Middleware::::
+2025-09-04 16:41:53.820 +05:30 [INF] ::::::End of Middleware::::
+2025-09-04 16:42:42.041 +05:30 [INF] ::::In Middleware::::
+2025-09-04 16:42:42.228 +05:30 [INF] ::::::End of Middleware::::
+2025-09-04 16:43:00.152 +05:30 [INF] ::::In Middleware::::
+2025-09-04 16:43:00.155 +05:30 [INF] ::::::End of Middleware::::
+2025-09-04 16:44:22.773 +05:30 [INF] ::::In Middleware::::
+2025-09-04 16:44:27.944 +05:30 [INF] ::::::End of Middleware::::
+2025-09-04 16:51:42.542 +05:30 [INF] ::::In Middleware::::
+2025-09-04 16:51:44.107 +05:30 [WRN] Custom HttpStatusCodeException: Index and length must refer to a location within the string. (Parameter 'length')
+Common.HttpStatusCodeException: Index and length must refer to a location within the string. (Parameter 'length')
+   at DLT.Service.Repository.Implementation.TripRepository.CreateTrip(TripRequestModel model) in /Users/kishanchudasama/PrioxisTech/DriverLocationTrackingBackend/DLT.Service/Repository/Implementation/TripRepository.cs:line 99
+   at DLT.Api.Controllers.TripController.AddTrip(TripRequestModel request) in /Users/kishanchudasama/PrioxisTech/DriverLocationTrackingBackend/DLT.Api/Controllers/TripController.cs:line 70
+   at lambda_method6(Closure, Object)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at ExceptionMiddleware.InvokeAsync(HttpContext context) in /Users/kishanchudasama/PrioxisTech/DriverLocationTrackingBackend/DLT.Api/Middlewares/ExceptionMiddleware.cs:line 23
+2025-09-04 16:51:44.127 +05:30 [INF] ::::::End of Middleware::::
+2025-09-04 16:53:28.084 +05:30 [INF] ::::In Middleware::::
+2025-09-04 16:54:47.990 +05:30 [INF] ::::In Middleware::::
+2025-09-04 16:56:11.642 +05:30 [INF] ::::In Middleware::::
+2025-09-04 16:56:45.430 +05:30 [INF] ::::::End of Middleware::::
+2025-09-04 16:56:56.029 +05:30 [INF] ::::In Middleware::::
+2025-09-04 16:57:06.282 +05:30 [INF] ::::::End of Middleware::::
+2025-09-04 18:03:43.647 +05:30 [INF] ::::In Middleware::::
+2025-09-04 18:03:45.184 +05:30 [WRN] Custom HttpStatusCodeException: Error in qruery Error in qruery An error occurred while saving the entity changes. See the inner exception for details.
+Common.HttpStatusCodeException: Error in qruery Error in qruery An error occurred while saving the entity changes. See the inner exception for details.
+   at Service.UnitOfWork.UnitOfWork`1.CommitAsyncWithTransaction() in /Users/kishanchudasama/PrioxisTech/DriverLocationTrackingBackend/DLT.Service/UnitOfWork/UnitOfWork.cs:line 74
+   at DLT.Service.Repository.Implementation.TripRepository.TripsStart(String tripSID) in /Users/kishanchudasama/PrioxisTech/DriverLocationTrackingBackend/DLT.Service/Repository/Implementation/TripRepository.cs:line 173
+   at DLT.Service.Repository.Implementation.TripRepository.TripsStart(String tripSID) in /Users/kishanchudasama/PrioxisTech/DriverLocationTrackingBackend/DLT.Service/Repository/Implementation/TripRepository.cs:line 187
+   at DLT.Api.Controllers.TripController.TripStart(String tripSID) in /Users/kishanchudasama/PrioxisTech/DriverLocationTrackingBackend/DLT.Api/Controllers/TripController.cs:line 81
+   at lambda_method6(Closure, Object)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at ExceptionMiddleware.InvokeAsync(HttpContext context) in /Users/kishanchudasama/PrioxisTech/DriverLocationTrackingBackend/DLT.Api/Middlewares/ExceptionMiddleware.cs:line 23
+2025-09-04 18:03:45.241 +05:30 [INF] ::::::End of Middleware::::
+2025-09-04 18:04:32.875 +05:30 [INF] ::::In Middleware::::
+2025-09-04 18:05:42.530 +05:30 [INF] ::::In Middleware::::
+2025-09-04 18:12:00.458 +05:30 [ERR] Unhandled Exception: A transport-level error has occurred when sending the request to the server. (provider: TCP Provider, error: 35 - An internal exception was caught)
+Microsoft.Data.SqlClient.SqlException (0x80131904): A transport-level error has occurred when sending the request to the server. (provider: TCP Provider, error: 35 - An internal exception was caught)
+ ---> System.IO.IOException: Unable to write data to the transport connection: Broken pipe.
+ ---> System.Net.Sockets.SocketException (32): Broken pipe
+   at System.Net.Sockets.NetworkStream.Write(Byte[] buffer, Int32 offset, Int32 count)
+   --- End of inner exception stack trace ---
+   at System.Net.Sockets.NetworkStream.Write(Byte[] buffer, Int32 offset, Int32 count)
+   at System.IO.Stream.Write(ReadOnlySpan`1 buffer)
+   at System.Net.Sockets.NetworkStream.Write(ReadOnlySpan`1 buffer)
+   at Microsoft.Data.SqlClient.SNI.SslOverTdsStream.Write(ReadOnlySpan`1 buffer)
+   at System.Net.Security.SyncReadWriteAdapter.WriteAsync(Stream stream, ReadOnlyMemory`1 buffer, CancellationToken cancellationToken)
+   at System.Net.Security.SslStream.WriteSingleChunk[TIOAdapter](ReadOnlyMemory`1 buffer, CancellationToken cancellationToken)
+   at System.Net.Security.SslStream.WriteAsyncInternal[TIOAdapter](ReadOnlyMemory`1 buffer, CancellationToken cancellationToken)
+   at System.Net.Security.SslStream.Write(Byte[] buffer, Int32 offset, Int32 count)
+   at Microsoft.Data.SqlClient.SNI.SNIPacket.WriteToStream(Stream stream)
+   at Microsoft.Data.SqlClient.SNI.SNITCPHandle.Send(SNIPacket packet)
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParserStateObject.ThrowExceptionAndWarning(Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParserStateObject.SNIWritePacket(PacketHandle packet, UInt32& sniError, Boolean canAccumulate, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParserStateObject.WriteSni(Boolean canAccumulate)
+   at Microsoft.Data.SqlClient.TdsParserStateObject.WritePacket(Byte flushMode, Boolean canAccumulate)
+   at Microsoft.Data.SqlClient.TdsParser.TdsExecuteTransactionManagerRequest(Byte[] buffer, TransactionManagerRequestType request, String transactionName, TransactionManagerIsolationLevel isoLevel, Int32 timeout, SqlInternalTransaction transaction, TdsParserStateObject stateObj, Boolean isDelegateControlRequest)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.ExecuteTransaction2005(TransactionRequest transactionRequest, String transactionName, IsolationLevel iso, SqlInternalTransaction internalTransaction, Boolean isDelegateControlRequest)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.ExecuteTransaction(TransactionRequest transactionRequest, String name, IsolationLevel iso, SqlInternalTransaction internalTransaction, Boolean isDelegateControlRequest)
+   at Microsoft.Data.SqlClient.SqlInternalTransaction.Rollback()
+   at Microsoft.Data.SqlClient.SqlTransaction.Rollback()
+   at System.Data.Common.DbTransaction.RollbackAsync(CancellationToken cancellationToken)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalTransaction.RollbackAsync(CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalTransaction.RollbackAsync(CancellationToken cancellationToken)
+   at DLT.Service.Repository.Implementation.TripRepository.TripsStart(String tripSID) in /Users/kishanchudasama/PrioxisTech/DriverLocationTrackingBackend/DLT.Service/Repository/Implementation/TripRepository.cs:line 185
+   at DLT.Api.Controllers.TripController.TripStart(String tripSID) in /Users/kishanchudasama/PrioxisTech/DriverLocationTrackingBackend/DLT.Api/Controllers/TripController.cs:line 81
+   at lambda_method6(Closure, Object)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at ExceptionMiddleware.InvokeAsync(HttpContext context) in /Users/kishanchudasama/PrioxisTech/DriverLocationTrackingBackend/DLT.Api/Middlewares/ExceptionMiddleware.cs:line 23
+ClientConnectionId:7f9ca8d5-1f57-4671-80da-00f73e921722
+2025-09-04 18:12:00.525 +05:30 [INF] ::::::End of Middleware::::
+2025-09-04 18:12:13.710 +05:30 [INF] ::::In Middleware::::
+2025-09-04 18:13:04.509 +05:30 [WRN] Custom HttpStatusCodeException: Error in qruery Error in qruery An error occurred while saving the entity changes. See the inner exception for details.
+Common.HttpStatusCodeException: Error in qruery Error in qruery An error occurred while saving the entity changes. See the inner exception for details.
+   at Service.UnitOfWork.UnitOfWork`1.CommitAsyncWithTransaction() in /Users/kishanchudasama/PrioxisTech/DriverLocationTrackingBackend/DLT.Service/UnitOfWork/UnitOfWork.cs:line 74
+   at DLT.Service.Repository.Implementation.TripRepository.TripsStart(String tripSID) in /Users/kishanchudasama/PrioxisTech/DriverLocationTrackingBackend/DLT.Service/Repository/Implementation/TripRepository.cs:line 173
+   at DLT.Service.Repository.Implementation.TripRepository.TripsStart(String tripSID) in /Users/kishanchudasama/PrioxisTech/DriverLocationTrackingBackend/DLT.Service/Repository/Implementation/TripRepository.cs:line 187
+   at DLT.Api.Controllers.TripController.TripStart(String tripSID) in /Users/kishanchudasama/PrioxisTech/DriverLocationTrackingBackend/DLT.Api/Controllers/TripController.cs:line 81
+   at lambda_method6(Closure, Object)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at ExceptionMiddleware.InvokeAsync(HttpContext context) in /Users/kishanchudasama/PrioxisTech/DriverLocationTrackingBackend/DLT.Api/Middlewares/ExceptionMiddleware.cs:line 23
+2025-09-04 18:13:04.514 +05:30 [INF] ::::::End of Middleware::::
+2025-09-04 18:13:26.140 +05:30 [INF] ::::In Middleware::::
+2025-09-04 18:15:25.696 +05:30 [INF] ::::In Middleware::::
+2025-09-04 18:15:41.146 +05:30 [WRN] Custom HttpStatusCodeException: Error in qruery Error in qruery An error occurred while saving the entity changes. See the inner exception for details.
+Common.HttpStatusCodeException: Error in qruery Error in qruery An error occurred while saving the entity changes. See the inner exception for details.
+   at Service.UnitOfWork.UnitOfWork`1.CommitAsyncWithTransaction() in /Users/kishanchudasama/PrioxisTech/DriverLocationTrackingBackend/DLT.Service/UnitOfWork/UnitOfWork.cs:line 74
+   at DLT.Service.Repository.Implementation.TripRepository.TripsStart(String tripSID) in /Users/kishanchudasama/PrioxisTech/DriverLocationTrackingBackend/DLT.Service/Repository/Implementation/TripRepository.cs:line 173
+   at DLT.Service.Repository.Implementation.TripRepository.TripsStart(String tripSID) in /Users/kishanchudasama/PrioxisTech/DriverLocationTrackingBackend/DLT.Service/Repository/Implementation/TripRepository.cs:line 187
+   at DLT.Api.Controllers.TripController.TripStart(String tripSID) in /Users/kishanchudasama/PrioxisTech/DriverLocationTrackingBackend/DLT.Api/Controllers/TripController.cs:line 81
+   at lambda_method6(Closure, Object)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at ExceptionMiddleware.InvokeAsync(HttpContext context) in /Users/kishanchudasama/PrioxisTech/DriverLocationTrackingBackend/DLT.Api/Middlewares/ExceptionMiddleware.cs:line 23
+2025-09-04 18:15:41.202 +05:30 [INF] ::::::End of Middleware::::
+2025-09-04 18:15:57.018 +05:30 [INF] ::::In Middleware::::
+2025-09-04 18:17:06.967 +05:30 [WRN] Custom HttpStatusCodeException: Error in qruery Error in qruery An error occurred while saving the entity changes. See the inner exception for details.
+Common.HttpStatusCodeException: Error in qruery Error in qruery An error occurred while saving the entity changes. See the inner exception for details.
+   at Service.UnitOfWork.UnitOfWork`1.CommitAsyncWithTransaction() in /Users/kishanchudasama/PrioxisTech/DriverLocationTrackingBackend/DLT.Service/UnitOfWork/UnitOfWork.cs:line 74
+   at DLT.Service.Repository.Implementation.TripRepository.TripsStart(String tripSID) in /Users/kishanchudasama/PrioxisTech/DriverLocationTrackingBackend/DLT.Service/Repository/Implementation/TripRepository.cs:line 173
+   at DLT.Service.Repository.Implementation.TripRepository.TripsStart(String tripSID) in /Users/kishanchudasama/PrioxisTech/DriverLocationTrackingBackend/DLT.Service/Repository/Implementation/TripRepository.cs:line 187
+   at DLT.Api.Controllers.TripController.TripStart(String tripSID) in /Users/kishanchudasama/PrioxisTech/DriverLocationTrackingBackend/DLT.Api/Controllers/TripController.cs:line 81
+   at lambda_method6(Closure, Object)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at ExceptionMiddleware.InvokeAsync(HttpContext context) in /Users/kishanchudasama/PrioxisTech/DriverLocationTrackingBackend/DLT.Api/Middlewares/ExceptionMiddleware.cs:line 23
+2025-09-04 18:17:07.030 +05:30 [INF] ::::::End of Middleware::::
+2025-09-04 18:50:26.474 +05:30 [INF] ::::In Middleware::::
+2025-09-04 18:54:18.323 +05:30 [INF] ::::In Middleware::::
+2025-09-04 18:54:58.859 +05:30 [INF] ::::::End of Middleware::::
+2025-09-04 19:13:47.801 +05:30 [INF] ::::In Middleware::::
+2025-09-04 19:13:49.467 +05:30 [INF] ::::::End of Middleware::::

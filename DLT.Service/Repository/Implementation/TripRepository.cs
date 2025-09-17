@@ -1,6 +1,7 @@
 using Common;
 using DLT.Models.Models.DriverLocationTracking;
 using DLT.Service.Repository.Interface;
+using Microsoft.AspNetCore.Http;
 using Models.Models.CommonModel;
 using Models.Models.SpDbContext;
 using Models.RequestModel;
@@ -16,11 +17,13 @@ public class TripRepository : ITripRepository
     private readonly DriverLocationTrackingDbContext _context;
     private readonly DriverLocationTrackingSpContext _spContext;
     private readonly IUnitOfWork _unitOfWork;
-    public TripRepository(DriverLocationTrackingDbContext context, DriverLocationTrackingSpContext spContext, IUnitOfWork unitOfWork)
+    private readonly IHttpContextAccessor _httpContextAccessor;
+    public TripRepository(DriverLocationTrackingDbContext context, DriverLocationTrackingSpContext spContext, IUnitOfWork unitOfWork, IHttpContextAccessor httpContextAccessor)
     {
         _context = context;
         _spContext = spContext;
         _unitOfWork = unitOfWork;
+        _httpContextAccessor = httpContextAccessor;
     }
     #region GetAll trips
     public async Task<Page> GetAllTrips(Dictionary<string, object> parameters)
@@ -74,7 +77,8 @@ public class TripRepository : ITripRepository
             {
                 throw new HttpStatusCodeException((int)StatusCode.BadRequest, "Driver not found");
             }
-            var admin = await _unitOfWork.GetRepository<User>().SingleOrDefaultAsync(u => u.UserSid == model.UserSID);
+            string userSID = _httpContextAccessor.HttpContext?.Items["UserSID"]?.ToString();
+            var admin = await _unitOfWork.GetRepository<User>().SingleOrDefaultAsync(u => u.UserSid == userSID);
             Trip t = new Trip();
             t.TripSid = "TRI-" + Guid.NewGuid().ToString();
             t.StartLatitude = model.StartLatitude;
@@ -357,10 +361,11 @@ public class TripRepository : ITripRepository
             var Driver = await _unitOfWork.GetRepository<User>()
                 .SingleOrDefaultAsync(u => u.UserSid == model.DriverSID);
             if (Driver == null)
-            {
+            { 
                 throw new HttpStatusCodeException((int)StatusCode.BadRequest, "Driver not found");
             }
-            var admin = await _unitOfWork.GetRepository<User>().SingleOrDefaultAsync(u => u.UserSid == model.UserSID);
+            string userSID = _httpContextAccessor.HttpContext?.Items["UserSID"]?.ToString();
+            var admin = await _unitOfWork.GetRepository<User>().SingleOrDefaultAsync(u => u.UserSid == userSID);
             t.StartLatitude = model.StartLatitude;
             t.StartLongitude = model.StartLongitude;
             t.ToLatitude = model.ToLatitude;

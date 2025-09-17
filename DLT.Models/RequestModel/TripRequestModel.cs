@@ -9,5 +9,4 @@ public class TripRequestModel
     public string StartLocationSID { get; set; }
     public string ToLocationSID { get; set; }
     public string DriverSID { get; set; }
-    public string UserSID { get; set; }
 }

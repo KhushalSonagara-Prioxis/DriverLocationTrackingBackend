@@ -1,6 +1,7 @@
 using Common;
 using DemoProject.Controllers;
 using DLT.Service.Repository.Interface;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Models.Models.CommonModel;
 using Models.RequestModel;
@@ -19,6 +20,7 @@ public class TripController : BaseController
         _tripRepository = tripRepository;
     }
     [HttpGet]
+    [Authorize(Roles = "Admin")]
     public async Task<ActionResult> GetAllTrips([FromQuery] SearchRequestModel searchModel)
     {
         var parameters = FillParamesFromModel(searchModel);
@@ -43,6 +45,7 @@ public class TripController : BaseController
     }
 
     [HttpPost("AddTripStatus/{tripSID}")]
+    [Authorize(Roles = "Driver")]
     public async Task<ActionResult> AddTripStatus([FromRoute]string tripSID,TripUpdateStatusRequestModel  tripUpdateStatusRequestModel)
     {
         var success = await _tripRepository.AddTripUpdate(tripSID, tripUpdateStatusRequestModel);
@@ -54,6 +57,7 @@ public class TripController : BaseController
     }
 
     [HttpGet("GetTripUpdateStatus/{tripSID}")]
+    [Authorize]
     public async Task<ActionResult> GetTripUpdateStatus([FromRoute] string tripSID)
     {
         var response = await _tripRepository.GetAllTripUpdateStatus(tripSID);
@@ -65,6 +69,7 @@ public class TripController : BaseController
     }
 
     [HttpPost("AddTrip")]
+    [Authorize(Roles = "Admin")]
     public async Task<ActionResult> AddTrip([FromBody] TripRequestModel request)
     {
         var success = await _tripRepository.CreateTrip(request);
@@ -76,6 +81,7 @@ public class TripController : BaseController
     }
 
     [HttpPost("TripStart/{tripSID}")]
+    [Authorize(Roles = "Driver")]
     public async Task<ActionResult> TripStart([FromRoute] string tripSID)
     {
         var success = await _tripRepository.TripsStart(tripSID);
@@ -87,6 +93,7 @@ public class TripController : BaseController
     }
     
     [HttpPost("TripEnd/{tripSID}")]
+    [Authorize(Roles = "Driver")]
     public async Task<ActionResult> TripEnd([FromRoute] string tripSID)
     {
         var success = await _tripRepository.TripsEnd(tripSID);
@@ -98,6 +105,7 @@ public class TripController : BaseController
     }
 
     [HttpDelete("DeleteTrip/{tripSID}")]
+    [Authorize(Roles = "Admin")]
     public async Task<ActionResult> DeleteTrip([FromRoute] string tripSID)
     {
         var success = await _tripRepository.DeleteTrip(tripSID);
@@ -109,6 +117,7 @@ public class TripController : BaseController
     }
 
     [HttpPost("UpdateTrip/{tripSID}")]
+    [Authorize(Roles = "Admin")]
     public async Task<ActionResult> UpdateTrip([FromRoute] string tripSID, [FromBody] TripRequestModel request)
     {
         var success = await _tripRepository.UpdateTrip(tripSID, request);

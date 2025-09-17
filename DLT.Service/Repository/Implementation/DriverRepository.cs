@@ -1,7 +1,9 @@
 using Common;
 using DLT.Models.Models.DriverLocationTracking;
 using DLT.Service.Repository.Interface;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
+using Models.Models.CommonModel;
 using Models.Models.SpDbContext;
 using Models.RequestModel;
 using Models.ResponsetModel;
@@ -16,12 +18,13 @@ public class DriverRepository : IDriverRepository
     private readonly DriverLocationTrackingDbContext _context;
     private readonly DriverLocationTrackingSpContext _spContext;
     private readonly IUnitOfWork _unitOfWork;
-
-    public DriverRepository(DriverLocationTrackingDbContext context, DriverLocationTrackingSpContext spContext, IUnitOfWork unitOfWork)
+    private readonly IHttpContextAccessor _httpContextAccessor;
+    public DriverRepository(DriverLocationTrackingDbContext context, DriverLocationTrackingSpContext spContext, IUnitOfWork unitOfWork, IHttpContextAccessor httpContextAccessor)
     {
         _context = context;
         _spContext = spContext;
         _unitOfWork = unitOfWork;
+        _httpContextAccessor = httpContextAccessor;
     }
     #region UpdateDriverCurrectLocationAsync
     public async Task<bool> UpdateDriverCurrectLocationAsync(string tripSID, DriverCurrentLocationRequestModel driverCurrentLocation)
@@ -119,4 +122,34 @@ public class DriverRepository : IDriverRepository
         }
     }
     #endregion
+    
+    #region GetAllTripsOfDriver
+
+    public async Task<Page> GetAllTripsOfDrivers(Dictionary<string, object> parameters)
+    {
+        try
+        {
+            var xmlParams = Common.CommonHelper.DictionaryToXml(parameters, "Search");
+            string userSID = "USR-0CC69F93-0FC3-47D6-943E-270E0FB21E30";
+                //_httpContextAccessor.HttpContext?.Items["UserSID"]?.ToString();
+            string query = "sp_SearchTrips {0} , {1}";
+            object[] param = { xmlParams, userSID };
+            var res = await _spContext.ExecutreStoreProcedureResultList(query, param);
+            if (res == null)
+            {
+                throw new HttpStatusCodeException((int)StatusCode.BadRequest, "No results found");
+            }
+
+            return res;
+        }
+        catch (HttpStatusCodeException exception)
+        {
+            throw;
+        }
+        catch (Exception exception)
+        {
+            throw new HttpStatusCodeException((int)StatusCode.InternalServerError, exception.Message);
+        }
+    }
+    #endregion 
 }
