@@ -1,16 +1,17 @@
 using DemoProject.Controllers;
 using DLT.Service.Repository.Implementation;
 using DLT.Service.Repository.Interface;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Models.RequestModel;
+using Serilog;
 
 namespace DLT.Api.Controllers;
 
 public class UserController : BaseController
 {
     private readonly IUserRepository _userRepository;
-    private readonly AuthenticationRepository  _authenticationRepository;
+    private readonly AuthenticationRepository _authenticationRepository;
+
     public UserController(IUserRepository userRepository, AuthenticationRepository authenticationRepository)
     {
         _userRepository = userRepository;
@@ -20,25 +21,50 @@ public class UserController : BaseController
     [HttpPost("SignUp")]
     public async Task<ActionResult> SignUp([FromBody] SignUpRequestModel request)
     {
-        var success = await _userRepository.CreateUser(request);
-        if (!success)
+        Log.Information("SignUp request received for Email: {Email}", request.Email);
+
+        try
         {
-            return BadRequest();
+            var success = await _userRepository.CreateUser(request);
+            if (!success)
+            {
+                Log.Warning("Failed to create user with Email: {Email}", request.Email);
+                return BadRequest(new { Message = "User creation failed" });
+            }
+
+            Log.Information("User created successfully with Email: {Email}", request.Email);
+            return Ok(new { Message = "User created successfully" });
         }
-        return Ok(new { Message = "User created successfully" });
+        catch (Exception ex)
+        {
+            Log.Error(ex, "Exception occurred while creating user with Email: {Email}", request.Email);
+            throw;
+        }
     }
 
     [HttpPost("Login")]
     public async Task<ActionResult> Login([FromBody] LoginRequestModel request)
     {
-        var res = await _userRepository.LoginUser(request);
-        if (res == null)
-        {
-            return BadRequest();
-        }
-        var token = _authenticationRepository.GenerateToken(res.UserSID, res.Role);
-        return Ok(new { Message = "User logged in successfully",token = token,role = res.Role });
-    }
-    
+        Log.Information("Login attempt for Email: {Email}", request.Email);
 
+        try
+        {
+            var res = await _userRepository.LoginUser(request);
+            if (res == null)
+            {
+                Log.Warning("Invalid login attempt for Email: {Email}", request.Email);
+                return BadRequest(new { Message = "Invalid credentials" });
+            }
+
+            var token = _authenticationRepository.GenerateToken(res.UserSID, res.Role);
+
+            Log.Information("Login successful for UserSID: {UserSID}, Role: {Role}", res.UserSID, res.Role);
+            return Ok(new { Message = "User logged in successfully", token = token, role = res.Role });
+        }
+        catch (Exception ex)
+        {
+            Log.Error(ex, "Exception occurred during login for Email: {Email}", request.Email);
+            throw;
+        }
+    }
 }

@@ -6,6 +6,7 @@ using Models.Models.SpDbContext;
 using Models.RequestModel;
 using Models.ResponsetModel;
 using Service.UnitOfWork;
+using Serilog; // <- Make sure you have Serilog installed
 
 namespace DLT.Service.Repository.Implementation;
 
@@ -29,33 +30,42 @@ public class UserRepository : IUserRepository
     {
         try
         {
+            Log.Information("Attempting to create user with email: {Email}", request.Email);
+
             var user = await _unitOfWork.GetRepository<User>().SingleOrDefaultAsync(u => u.UserEmail == request.Email);
             if (user != null)
             {
-                throw new HttpStatusCodeException((int)StatusCode.BadRequest,"User With Email Already Exists");
+                Log.Warning("User creation failed. User with email {Email} already exists", request.Email);
+                throw new HttpStatusCodeException((int)StatusCode.BadRequest, "User With Email Already Exists");
             }
 
-            User u = new User();
-            u.UserSid = "USR-" + Guid.NewGuid().ToString();
-            u.UserName = request.UserName;
-            u.UserEmail = request.Email;
-            u.PhoneNumber = request.PhoneNumber;
-            string hashPassword = BCrypt.Net.BCrypt.HashPassword(request.Password);
-            u.PasswordHash = hashPassword;
-            u.Role = (int)StatusEnum.Driver;
-            u.CreatedDate = DateTime.Now;
-            u.LastModifiedDate = DateTime.Now;
-            u.Status = (int)StatusEnum.Acitive;
+            User u = new User
+            {
+                UserSid = "USR-" + Guid.NewGuid().ToString(),
+                UserName = request.UserName,
+                UserEmail = request.Email,
+                PhoneNumber = request.PhoneNumber,
+                PasswordHash = BCrypt.Net.BCrypt.HashPassword(request.Password),
+                Role = (int)StatusEnum.Driver,
+                CreatedDate = DateTime.Now,
+                LastModifiedDate = DateTime.Now,
+                Status = (int)StatusEnum.Acitive
+            };
+
             await _unitOfWork.GetRepository<User>().InsertAsync(u);
             await _unitOfWork.CommitAsync();
+
+            Log.Information("User created successfully with email: {Email}", request.Email);
             return true;
         }
         catch (HttpStatusCodeException e)
         {
+            Log.Error(e, "HTTP error occurred while creating user with email: {Email}", request.Email);
             throw;
         }
         catch (Exception e)
         {
+            Log.Error(e, "Unexpected error occurred while creating user with email: {Email}", request.Email);
             throw new HttpStatusCodeException((int)StatusCode.InternalServerError, e.Message);
         }
     }
@@ -64,27 +74,39 @@ public class UserRepository : IUserRepository
     {
         try
         {
+            Log.Information("Attempting login for user with email: {Email}", request.Email);
+
             var user = await _unitOfWork.GetRepository<User>().SingleOrDefaultAsync(u => u.UserEmail == request.Email);
             if (user == null)
             {
-                throw new HttpStatusCodeException((int)StatusCode.BadRequest,"Email is Not Correct");
+                Log.Warning("Login failed. Email not found: {Email}", request.Email);
+                throw new HttpStatusCodeException((int)StatusCode.BadRequest, "Email is Not Correct");
             }
-            bool isPasseordValid = BCrypt.Net.BCrypt.Verify(request.Password, user.PasswordHash);
-            if (!isPasseordValid)
+
+            bool isPasswordValid = BCrypt.Net.BCrypt.Verify(request.Password, user.PasswordHash);
+            if (!isPasswordValid)
             {
-                throw new HttpStatusCodeException((int)StatusCode.BadRequest,"Password is Wrong");
+                Log.Warning("Login failed. Wrong password for email: {Email}", request.Email);
+                throw new HttpStatusCodeException((int)StatusCode.BadRequest, "Password is Wrong");
             }
-            TokenClaimsResponseModel response = new TokenClaimsResponseModel();
-            response.UserSID = user.UserSid;
-            response.Role = user.Role.ToString();
+
+            TokenClaimsResponseModel response = new TokenClaimsResponseModel
+            {
+                UserSID = user.UserSid,
+                Role = user.Role.ToString()
+            };
+
+            Log.Information("User login successful for email: {Email}", request.Email);
             return response;
         }
         catch (HttpStatusCodeException e)
         {
+            Log.Error(e, "HTTP error occurred during login for email: {Email}", request.Email);
             throw;
         }
         catch (Exception e)
         {
+            Log.Error(e, "Unexpected error occurred during login for email: {Email}", request.Email);
             throw new HttpStatusCodeException((int)StatusCode.InternalServerError, e.Message);
         }
     }
