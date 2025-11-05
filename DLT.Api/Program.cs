@@ -5,12 +5,14 @@ using DLT.Api.Helper;
 using DLT.Models.Models.DriverLocationTracking;
 using DLT.Service.Repository.Implementation;
 using DLT.Service.Repository.Interface;
+using FluentValidation;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Models.Models.SpDbContext;
+using Models.Models.Validation;
 using Serilog;
 
 namespace DLT.Api;
@@ -89,7 +91,8 @@ public class Program
                 }
             });
         });
-        
+        // ✅ Add Controllers & Fluent Validation
+        builder.Services.AddValidatorsFromAssemblyContaining<TripValidation>();
         builder.Services.AddDbContext<DriverLocationTrackingSpContext>(options =>
         {
             options.UseSqlServer(connectionString, sqlOptions =>

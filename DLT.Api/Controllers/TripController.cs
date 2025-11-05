@@ -59,7 +59,10 @@ public class TripController : BaseController
     public async Task<ActionResult> AddTripStatus([FromRoute] string tripSID, TripUpdateStatusRequestModel tripUpdateStatusRequestModel)
     {
         Log.Information("Adding trip status for TripSID: {TripSID}", tripSID);
-
+        if (!ModelState.IsValid)
+        {
+            return BadRequest(ModelState);
+        }
         var success = await _tripRepository.AddTripUpdate(tripSID, tripUpdateStatusRequestModel);
         if (!success)
         {

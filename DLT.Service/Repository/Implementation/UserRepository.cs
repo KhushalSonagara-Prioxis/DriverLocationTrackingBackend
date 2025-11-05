@@ -38,7 +38,12 @@ public class UserRepository : IUserRepository
                 Log.Warning("User creation failed. User with email {Email} already exists", request.Email);
                 throw new HttpStatusCodeException((int)StatusCode.BadRequest, "User With Email Already Exists");
             }
-
+            var userTemp = await _unitOfWork.GetRepository<User>().SingleOrDefaultAsync(u => u.PhoneNumber == request.PhoneNumber);
+            if (userTemp != null)
+            {
+                Log.Warning("User creation failed. User with email {PhonerNumber} already exists", request.PhoneNumber);
+                throw new HttpStatusCodeException((int)StatusCode.BadRequest, "User With Phone Number Already Exists");
+            }
             User u = new User
             {
                 UserSid = "USR-" + Guid.NewGuid().ToString(),

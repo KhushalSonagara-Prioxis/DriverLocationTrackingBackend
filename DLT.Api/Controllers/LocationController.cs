@@ -2,6 +2,7 @@ using Common;
 using DemoProject.Controllers;
 using DLT.Models.Models.DriverLocationTracking;
 using DLT.Service.Repository.Interface;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Serilog;
 
@@ -19,6 +20,7 @@ public class LocationController : BaseController
     }
 
     [HttpGet]
+    [Authorize(Roles = "Admin")]
     public async Task<IActionResult> GetAllLocation()
     {
         Log.Information("Fetching all locations");
