@@ -12,7 +12,7 @@ namespace DLT.Api.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-[Authorize(Roles = "Driver")]
+
 public class DriverController : BaseController
 {
     private readonly IDriverRepository _repository;
@@ -21,7 +21,7 @@ public class DriverController : BaseController
     {
         _repository = repository;
     }
-
+    [Authorize(Roles = "Driver")]
     [HttpPost("UpdateDriverCurrentLocation/{tripSId}")]
     public async Task<IActionResult> UpdateDriverCurrentLocation([FromBody] DriverCurrentLocationRequestModel driverCurrentLocationRequestModel, [FromRoute] string tripSId)
     {
@@ -37,7 +37,7 @@ public class DriverController : BaseController
         Log.Information("Successfully updated driver location for TripId: {TripId}", tripSId);
         return NoContent();
     }
-
+    [Authorize(Roles = "Admin")]
     [HttpGet("GetCurrentLocation/{tripSId}")]
     public async Task<IActionResult> GetTripDetails([FromRoute] string tripSId)
     {
@@ -55,6 +55,7 @@ public class DriverController : BaseController
     }
 
     [HttpGet("GetDrivers")]
+    [Authorize(Roles = "Admin")]
     public async Task<IActionResult> GetDrivers()
     {
         Log.Information("Fetching all drivers");
@@ -71,6 +72,7 @@ public class DriverController : BaseController
     }
 
     [HttpGet("GetAllTripsOfDriver")]
+    [Authorize(Roles = "Driver")]
     public async Task<ActionResult> GetAllTrips([FromQuery] SearchRequestModel searchModel)
     {
         Log.Information("Fetching all trips for driver with search filter {@SearchModel}", searchModel);
