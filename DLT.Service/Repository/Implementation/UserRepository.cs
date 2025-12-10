@@ -28,22 +28,29 @@ public class UserRepository : IUserRepository
 
     public async Task<bool> CreateUser(SignUpRequestModel request)
     {
+        var userRepository = _unitOfWork.GetRepository<User>();
         try
         {
             Log.Information("Attempting to create user with email: {Email}", request.Email);
 
-            var user = await _unitOfWork.GetRepository<User>().SingleOrDefaultAsync(u => u.UserEmail == request.Email);
-            if (user != null)
+            var existingUser = await userRepository.SingleOrDefaultAsync(u =>
+                u.UserEmail == request.Email || u.PhoneNumber == request.PhoneNumber);
+
+            if (existingUser != null)
             {
-                Log.Warning("User creation failed. User with email {Email} already exists", request.Email);
-                throw new HttpStatusCodeException((int)StatusCode.BadRequest, "User With Email Already Exists");
+                if (existingUser.UserEmail == request.Email)
+                {
+                    Log.Warning("User creation failed. User with email {Email} already exists", request.Email);
+                    throw new HttpStatusCodeException((int)StatusCode.BadRequest, "User with email already exists");
+                }
+
+                if (existingUser.PhoneNumber == request.PhoneNumber)
+                {
+                    Log.Warning("User creation failed. User with phone number {PhoneNumber} already exists", request.PhoneNumber);
+                    throw new HttpStatusCodeException((int)StatusCode.BadRequest, "User with phone number already exists");
+                }
             }
-            var userTemp = await _unitOfWork.GetRepository<User>().SingleOrDefaultAsync(u => u.PhoneNumber == request.PhoneNumber);
-            if (userTemp != null)
-            {
-                Log.Warning("User creation failed. User with email {PhonerNumber} already exists", request.PhoneNumber);
-                throw new HttpStatusCodeException((int)StatusCode.BadRequest, "User With Phone Number Already Exists");
-            }
+
             User u = new User
             {
                 UserSid = "USR-" + Guid.NewGuid().ToString(),
@@ -88,7 +95,7 @@ public class UserRepository : IUserRepository
                 throw new HttpStatusCodeException((int)StatusCode.BadRequest, "Email is Not Correct");
             }
 
-            bool isPasswordValid = BCrypt.Net.BCrypt.Verify(request.Password, user.PasswordHash);
+            bool isPasswordValid = BCrypt.Net.BCrypt.Verify(request.Password, user.PasswordHash); 
             if (!isPasswordValid)
             {
                 Log.Warning("Login failed. Wrong password for email: {Email}", request.Email);

@@ -7,6 +7,8 @@ using Serilog;
 
 namespace DLT.Api.Controllers;
 
+[ApiController]
+[Route("api/[controller]")]
 public class UserController : BaseController
 {
     private readonly IUserRepository _userRepository;
