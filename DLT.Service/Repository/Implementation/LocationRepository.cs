@@ -3,6 +3,7 @@ using DLT.Models.Models.DriverLocationTracking;
 using DLT.Service.Repository.Interface;
 using Microsoft.EntityFrameworkCore;
 using Models.Models.SpDbContext;
+using Models.RequestModel;
 using Models.ResponsetModel;
 using Newtonsoft.Json;
 using Serilog;
@@ -52,6 +53,36 @@ public class LocationRepository : ILocationRepository
         {
             Log.Error(ex, "Unexpected error occurred while fetching all locations");
             throw new HttpStatusCodeException((int)StatusCode.InternalServerError, "Internal server error");
+        }
+    }
+
+    public async Task<LocationResponseModel> AddLocation(LocationRequestModel model)
+    {
+        try
+        {
+            var location = await _unitOfWork.GetRepository<Location>().SingleOrDefaultAsync(x=>x.LocationName == model.LocationName);
+            if (location != null)
+            {
+                throw new HttpStatusCodeException((int)StatusCode.BadRequest, "Location already exists");
+            }
+
+            Location l = new Location()
+            {
+                LocationSid = "LOC-" + Guid.NewGuid().ToString(),
+                LocationName = model.LocationName,
+            };
+            await _unitOfWork.GetRepository<Location>().InsertAsync(l);
+            await _unitOfWork.CommitAsync();
+            Log.Information("Created location {LocationName}", model.LocationName);
+            return new LocationResponseModel()
+            {
+                LocationSID = l.LocationSid,
+                LocationName = model.LocationName,
+            };
+        }
+        catch (HttpStatusCodeException ex)
+        {
+            throw new HttpStatusCodeException(ex.StatusCode, ex.Message);
         }
     }
 }

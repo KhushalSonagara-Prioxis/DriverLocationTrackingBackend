@@ -32,6 +32,7 @@ public class Program
         builder.Services.AddScoped<ITripRepository, TripRepository>();
         builder.Services.AddScoped<ILocationRepository, LocationRepository>();
         builder.Services.AddScoped<IUserRepository, UserRepository>();
+        builder.Services.AddScoped<IDashboardRepository,DashboardRepository>();
         
         //JWT service 
         builder.Services.AddSingleton<AuthenticationRepository>();

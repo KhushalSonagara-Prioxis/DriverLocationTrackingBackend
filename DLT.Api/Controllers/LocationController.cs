@@ -4,6 +4,7 @@ using DLT.Models.Models.DriverLocationTracking;
 using DLT.Service.Repository.Interface;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Models.RequestModel;
 using Serilog;
 
 namespace DLT.Api.Controllers;
@@ -41,6 +42,19 @@ public class LocationController : BaseController
         }
 
         Log.Information("Successfully fetched {LocationCount} locations", res.Count());
+        return Ok(res);
+    }
+
+    [HttpPost]
+    [Authorize(Roles = "Admin")]
+    public async Task<IActionResult> CreateLocation([FromBody] LocationRequestModel model)
+    {
+        var res = await _locationRepository.AddLocation(model);
+        if (res == null)
+        {
+            Log.Warning("Location data is null");
+            return NotFound();
+        }
         return Ok(res);
     }
 }
