@@ -201,7 +201,7 @@ public class TripRepository : ITripRepository
             tripUpdate.DriverId = trip.DriverId ?? 0;
             tripUpdate.TripId = trip.TripId;
             tripUpdate.TripUpdatesStatus = (int)StatusEnum.Start;
-            tripUpdate.Note = "Stated trip";
+            tripUpdate.Note = "Started trip";
             tripUpdate.TimeStamp = DateTime.Now;
             tripUpdate.TripUpdatedLatitude = trip.StartLatitude;
             tripUpdate.TripUpdatedLongitude = trip.StartLongitude;

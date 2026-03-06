@@ -95,7 +95,7 @@ public class UserRepository : IUserRepository
                 throw new HttpStatusCodeException((int)StatusCode.BadRequest, "Email is Not Correct");
             }
 
-            bool isPasswordValid = BCrypt.Net.BCrypt.Verify(request.Password, user.PasswordHash);
+            bool isPasswordValid = BCrypt.Net.BCrypt.Verify(request.Password, user.PasswordHash); 
             if (!isPasswordValid)
             {
                 Log.Warning("Login failed. Wrong password for email: {Email}", request.Email);

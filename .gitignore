@@ -856,3 +856,6 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/DLT.Api/log20250917.txt
+/DLT.Api/log20251105.txt
+/DLT.Api/log20251210.txt
