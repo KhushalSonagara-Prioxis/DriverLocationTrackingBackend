@@ -113,8 +113,8 @@ public class DriverRepository : IDriverRepository
     }
     #endregion
     
-    #region GetAllDrivers
-    public async Task<List<DriverResponseModel>> GetAllDrivers()
+    #region GetAllDriversDropDown
+    public async Task<List<DriverDropDownResponseModel>> GetAllDriversDropDown()
     {
         Log.Information("Fetching all drivers");
 
@@ -128,8 +128,8 @@ public class DriverRepository : IDriverRepository
                 throw new HttpStatusCodeException((int)StatusCode.NotFound, "Driver not found");
             }
 
-            List<DriverResponseModel> res =
-                JsonConvert.DeserializeObject<List<DriverResponseModel>>(JsonConvert.SerializeObject(drivers));
+            List<DriverDropDownResponseModel> res =
+                JsonConvert.DeserializeObject<List<DriverDropDownResponseModel>>(JsonConvert.SerializeObject(drivers));
 
             if (res == null && !drivers.Any())
             {
@@ -188,5 +188,114 @@ public class DriverRepository : IDriverRepository
             throw new HttpStatusCodeException((int)StatusCode.InternalServerError, ex.Message);
         }
     }
-    #endregion 
+    #endregion
+
+    #region Get Driver list
+    public async Task<Page> GetDriverList(Dictionary<string, object> parameters)
+    {
+        Log.Information("Fetching all drivers");
+
+        try
+        {
+            var xmlParams = Common.CommonHelper.DictionaryToXml(parameters, "Search");
+            // string userSID = _httpContextAccessor.HttpContext?.Items["UserSID"]?.ToString();
+
+            string query = "sp_SearchDrivers {0}";
+            object[] param = { xmlParams };
+
+            var drivers = await _spContext.ExecutreStoreProcedureResultList(query, param);
+            
+            Log.Information("Successfully retrieved drivers");
+            return drivers;
+        }
+        catch (HttpStatusCodeException ex)
+        {
+            Log.Warning(ex, "Known error occurred while fetching all drivers");
+            throw;
+        }
+        catch (Exception ex)
+        {
+            Log.Error(ex, "Unexpected error occurred while fetching all drivers");
+            throw new HttpStatusCodeException((int)StatusCode.InternalServerError, ex);
+        }
+    }
+    #endregion
+    
+    #region Get Driver Details
+
+    public async Task<DriverDetailsResponseModel> GetDriverDetails(string driverSid)
+    {
+        Log.Information("Fetching driver details");
+        var drivers = await _unitOfWork.GetRepository<User>()
+            .SingleOrDefaultAsync(d =>d.UserSid == driverSid && d.Role == (int)StatusEnum.Driver && d.Status != (int)StatusEnum.Delete);
+            
+        if (drivers == null)
+        {
+            Log.Warning("No drivers found in database");
+            throw new HttpStatusCodeException((int)StatusCode.BadRequest, "Driver not found");
+        }
+        
+        return new DriverDetailsResponseModel{
+            UserSID = drivers.UserSid,
+            UserName = drivers.UserName,
+            PhoneNumber = drivers.PhoneNumber,
+            UserEmail = drivers.UserEmail,
+            Status = drivers.Status,
+            StatusName = drivers.Status == (int)StatusEnum.Acitive? "Active" : "Inactive" ,
+            CreatedDate  = drivers.CreatedDate,
+            LastModifiedDate  = drivers.LastModifiedDate
+            };
+
+    }
+    #endregion
+    
+    #region Inactive Driver Status
+
+    public async Task<bool> ActiveInactiveDriver(string driverSid)
+    {
+        Log.Information("Fetching driver details");
+        var drivers = await _unitOfWork.GetRepository<User>()
+            .SingleOrDefaultAsync(d =>d.UserSid == driverSid && d.Role == (int)StatusEnum.Driver && d.Status != (int)StatusEnum.Delete);
+            
+        if (drivers == null)
+        {
+            Log.Warning("No drivers found in database");
+            throw new HttpStatusCodeException((int)StatusCode.BadRequest, "Driver not found");
+        }
+        
+        drivers.Status = drivers.Status == (int)StatusEnum.Inactive? (int)StatusEnum.Acitive : (int)StatusEnum.Inactive;
+        drivers.LastModifiedDate = DateTime.Now;
+        
+        _unitOfWork.GetRepository<User>().Update(drivers);
+        _unitOfWork.CommitAsync();
+        
+        Log.Information("Successfully Inactive driver");
+        return true;
+    }
+    #endregion
+    
+    #region Inactive Driver Status
+
+    public async Task<bool> DeleteDriver(string driverSid)
+    {
+        Log.Information("Fetching driver details");
+        var drivers = await _unitOfWork.GetRepository<User>()
+            .SingleOrDefaultAsync(d =>d.UserSid == driverSid && d.Role == (int)StatusEnum.Driver && d.Status != (int)StatusEnum.Delete);
+            
+        if (drivers == null)
+        {
+            Log.Warning("No drivers found in database");
+            throw new HttpStatusCodeException((int)StatusCode.BadRequest, "Driver not found");
+        }
+        
+        drivers.Status = (int)StatusEnum.Delete;
+        drivers.LastModifiedDate = DateTime.Now;
+        
+        _unitOfWork.GetRepository<User>().Update(drivers);
+        _unitOfWork.CommitAsync();
+        
+        Log.Information("Successfully Deleted driver");
+        return true;
+    }
+    #endregion
 }

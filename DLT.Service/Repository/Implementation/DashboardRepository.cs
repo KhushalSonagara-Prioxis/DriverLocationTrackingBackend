@@ -4,6 +4,10 @@ using DLT.Service.Repository.Interface;
 using Microsoft.AspNetCore.Http;
 using Models.Models.SpDbContext;
 using Models.ResponsetModel;
+using Models.RequestModel;
+using Newtonsoft.Json;
+using Serilog;
+using Service.RepositoryFactory;
 using Service.UnitOfWork;
 
 namespace DLT.Service.Repository.Implementation;
@@ -22,7 +26,7 @@ public class DashboardRepository : IDashboardRepository
         _unitOfWork = unitOfWork;
         _httpContextAccessor = httpContextAccessor;
     }
-    public async Task<DashboadResponseModel> AdminDashBoard()
+    public async Task<DashboardTileResponseModel> AdminDashBoard()
     {
         var trips = await _unitOfWork
             .GetRepository<Trip>()
@@ -32,7 +36,7 @@ public class DashboardRepository : IDashboardRepository
             .GetRepository<User>()
             .GetAllAsync(x => x.Status != (int)StatusEnum.Delete && x.Role == (int)StatusEnum.Driver);
 
-        DashboadResponseModel dashboadResponse = new DashboadResponseModel
+        DashboardTileResponseModel dashboardResponse = new DashboardTileResponseModel
         {
             TotalNumberOfTrips = trips?.Count() ?? 0,
             CompletedTrips = trips?.Count(t => t.TripStatus == (int)StatusEnum.Completed) ?? 0,
@@ -41,6 +45,33 @@ public class DashboardRepository : IDashboardRepository
             NumberOfDriver = drivers?.Count() ?? 0
         };
 
-        return dashboadResponse;
+        return dashboardResponse;
+    }
+
+    public async Task<AdminDashboardBarChartResponseModel> AdminDashBoardBarChart(AdminDashBoardChartRequestModel requestModel)
+    {
+       
+        try
+        {
+            string query = "sp_GetDashboardBarCharts_JSON @StartDate = {0}, @EndDate = {1}";
+            object[] param = { requestModel.StartDate, requestModel.EndDate };
+            var res = await _spContext.ExecuteStoreProcedure(query, param);
+
+            AdminDashboardBarChartResponseModel response =
+                JsonConvert.DeserializeObject<AdminDashboardBarChartResponseModel>(res?.ToString() ?? "{}");
+
+            if (response == null)
+            {
+                Log.Warning("No trip details found");
+                throw new HttpStatusCodeException((int)StatusCode.NotFound, "Trip not found");
+            }
+
+            return response;
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
     }
 }

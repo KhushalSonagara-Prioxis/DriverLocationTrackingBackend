@@ -175,4 +175,20 @@ public class TripController : BaseController
         Log.Information("Trip updated successfully for TripSID: {TripSID}", tripSID);
         return Ok(new { message = "Trip Updated successfully" });
     }
+    
+    [Authorize(Roles = "Admin")]
+    [HttpGet("TripTileCount")]
+    public async Task<IActionResult> TripTileCount()
+    {
+        var res = await _tripRepository.TripTileCount();
+        return Ok(res);
+    }
+    
+    [Authorize(Roles = "Driver")]
+    [HttpGet("DriverTripTileCount")]
+    public async Task<IActionResult> DriverTripTileCount()
+    {
+        var res = await _tripRepository.DriverTripTileCount();
+        return Ok(res);
+    }
 }

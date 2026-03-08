@@ -54,13 +54,13 @@ public class DriverController : BaseController
         return Ok(details);
     }
 
-    [HttpGet("GetDrivers")]
+    [HttpGet("GetDriversDropDown")]
     [Authorize(Roles = "Admin")]
-    public async Task<IActionResult> GetDrivers()
+    public async Task<IActionResult> GetDriversDropDown()
     {
         Log.Information("Fetching all drivers");
 
-        var res = await _repository.GetAllDrivers();
+        var res = await _repository.GetAllDriversDropDown();
         if (res == null)
         {
             Log.Warning("No drivers found");
@@ -97,5 +97,84 @@ public class DriverController : BaseController
 
         Log.Information("Fetched {TripCount} trips for driver", response.Count);
         return Ok(BindSearchResult(list, searchModel, "all trips of driver"));
+    }
+    
+    [HttpGet("DriverList")]
+    [Authorize(Roles = "Admin")]
+    public async Task<IActionResult> GetDriverList([FromQuery] SearchRequestModel searchModel)
+    {
+        Log.Information("Fetching all driver with search filter {@SearchModel}", searchModel);
+
+        var parameters = FillParamesFromModel(searchModel);
+        var list = await _repository.GetDriverList(parameters);
+        List<DriverDetailsResponseModel> response = JsonConvert.DeserializeObject<List<DriverDetailsResponseModel>>(list.Result?.ToString() ?? "[]") ?? [];
+
+        if (response == null)
+        {
+            Log.Error("Driver response deserialization failed for searchModel {@SearchModel}", searchModel);
+            throw new HttpStatusCodeException((int)Common.StatusCode.BadRequest, "No results found");;
+        }
+
+        if (response.Count == 0)
+        {
+            Log.Warning("No Driver found for  with search filter {@SearchModel}", searchModel);
+            throw new HttpStatusCodeException((int)Common.StatusCode.BadRequest, "No results found");
+        }
+
+        list.Result = response;
+
+        Log.Information("Fetched {TripCount} trips for driver", response.Count);
+        return Ok(BindSearchResult(list, searchModel, "all trips of driver"));
+    }
+    
+    [HttpGet("DriverDetails/{driverSid}")]
+    [Authorize(Roles = "Admin")]
+    public async Task<DriverDetailsResponseModel> GetDriverDetail([FromRoute]string driverSid)
+    {
+        Log.Information("Fetching  driver with {@driverSid}", driverSid);
+
+        var response = await _repository.GetDriverDetails(driverSid);
+        
+        if (response == null)
+        {
+            Log.Error("Driver response deserialization failed for searchModel {@driverSid}",driverSid);
+            throw new HttpStatusCodeException((int)Common.StatusCode.BadRequest, "No results found");;
+        }
+        Log.Information("Fetching  driver with {@driverSid}", driverSid);
+        return response;
+    }
+    
+    [HttpPost("ActiveInactiveDriver/{driverSid}")]
+    [Authorize(Roles = "Admin")]
+    public async Task<bool> ActiveInactiveDriver([FromRoute]string driverSid)
+    {
+        Log.Information("Fetching  driver with {@driverSid}", driverSid);
+
+        var response = await _repository.ActiveInactiveDriver(driverSid);
+        
+        if (response == null)
+        {
+            Log.Error("Driver response deserialization failed for searchModel {@driverSid}",driverSid);
+            throw new HttpStatusCodeException((int)Common.StatusCode.BadRequest, "No results found");;
+        }
+        Log.Information("Fetching  driver with {@driverSid}", driverSid);
+        return response;
+    }
+    
+    [HttpDelete("DeleteDriver/{driverSid}")]
+    [Authorize(Roles = "Admin")]
+    public async Task<bool> DeleteDriver([FromRoute] string driverSid)
+    {
+        Log.Information("Fetching  driver with {@driverSid}", driverSid);
+
+        var response = await _repository.DeleteDriver(driverSid);
+        
+        if (response == null)
+        {
+            Log.Error("Driver response deserialization failed for searchModel {@driverSid}",driverSid);
+            throw new HttpStatusCodeException((int)Common.StatusCode.BadRequest, "No results found");;
+        }
+        Log.Information("Fetching  driver with {@driverSid}", driverSid);
+        return response;
     }
 }

@@ -14,4 +14,6 @@ public interface ITripRepository
     Task<bool> TripsEnd(string tripSID);
     Task<bool> DeleteTrip(string tripSID);
     Task<bool> UpdateTrip(string tripSID, TripRequestModel tripRequestModel);
+    Task<TripTileResponseModel> TripTileCount();
+    Task<TripTileResponseModel> DriverTripTileCount();
 }

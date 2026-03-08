@@ -14,3 +14,11 @@ public class TripListResponseModel
     public string DriverName { get; set; }
     public DateTime LastModifiedDate { get; set; }
 }
+
+public class TripTileResponseModel
+{
+    public int TotalNumberOfTrips { get; set; }
+    public int InProgressTrips { get; set; }
+    public int CompletedTrips { get; set; }
+    public int PendingTrips { get; set; }
+}

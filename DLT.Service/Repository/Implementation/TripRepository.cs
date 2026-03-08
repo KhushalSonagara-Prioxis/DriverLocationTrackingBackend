@@ -465,4 +465,53 @@ public class TripRepository : ITripRepository
 
     #endregion
     
+    #region Trip tile
+    public async Task<TripTileResponseModel> TripTileCount()
+    {
+        var trips = await _unitOfWork
+            .GetRepository<Trip>()
+            .GetAllAsync(x => x.Status != (int)StatusEnum.Delete);
+        
+        TripTileResponseModel tripTileResponse = new TripTileResponseModel
+        {
+            TotalNumberOfTrips = trips?.Count() ?? 0,
+            CompletedTrips = trips?.Count(t => t.TripStatus == (int)StatusEnum.Completed) ?? 0,
+            InProgressTrips = trips?.Count(t => t.TripStatus == (int)StatusEnum.InProgress) ?? 0,
+            PendingTrips = trips?.Count(t => t.TripStatus == (int)StatusEnum.Pending) ?? 0,
+        };
+
+        return tripTileResponse;
+    }
+    #endregion
+    
+    #region Driver Trip tile
+    public async Task<TripTileResponseModel> DriverTripTileCount()
+    { 
+        string userSID = _httpContextAccessor.HttpContext?.Items["UserSID"]?.ToString();
+
+        var user = await _unitOfWork.GetRepository<User>()
+            .SingleOrDefaultAsync(u => u.UserSid == userSID && u.Status != (int)StatusEnum.Delete);
+
+        if (user == null)
+        {
+            Log.Warning("No trips found for Driver UserSID: {UserSID}", userSID);
+            throw new HttpStatusCodeException((int)StatusCode.BadRequest, "No user found");
+        }
+        
+        var trips = await _unitOfWork
+            .GetRepository<Trip>()
+            .GetAllAsync(x => x.Status != (int)StatusEnum.Delete && x.DriverId == user.UserId);
+        
+        TripTileResponseModel tripTileResponse = new TripTileResponseModel
+        {
+            TotalNumberOfTrips = trips?.Count() ?? 0,
+            CompletedTrips = trips?.Count(t => t.TripStatus == (int)StatusEnum.Completed) ?? 0,
+            InProgressTrips = trips?.Count(t => t.TripStatus == (int)StatusEnum.InProgress) ?? 0,
+            PendingTrips = trips?.Count(t => t.TripStatus == (int)StatusEnum.Pending) ?? 0,
+        };
+
+        return tripTileResponse;
+    }
+    #endregion
+    
 }
