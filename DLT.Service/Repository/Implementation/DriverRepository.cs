@@ -274,7 +274,7 @@ public class DriverRepository : IDriverRepository
     }
     #endregion
     
-    #region Inactive Driver Status
+    #region Delete Driver
 
     public async Task<bool> DeleteDriver(string driverSid)
     {
