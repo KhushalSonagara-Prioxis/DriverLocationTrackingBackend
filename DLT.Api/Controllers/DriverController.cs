@@ -37,7 +37,7 @@ public class DriverController : BaseController
         Log.Information("Successfully updated driver location for TripId: {TripId}", tripSId);
         return NoContent();
     }
-    [Authorize(Roles = "Admin")]
+    [Authorize]
     [HttpGet("GetCurrentLocation/{tripSId}")]
     public async Task<IActionResult> GetTripDetails([FromRoute] string tripSId)
     {

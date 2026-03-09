@@ -357,36 +357,28 @@ public class TripRepository : ITripRepository
     {
         try
         {
-            Log.Information("Starting GetAllTripUpdateStatus operation for TripSID: {TripSID}", tripSID);
+            Log.Information("Starting GetAllTripUpdateStatus for TripSID: {TripSID}", tripSID);
 
-            string query = "sp_GetTripUpdates {0}";
+            string query = "EXEC sp_GetTripUpdates @TripSID = {0}";
             object[] param = { tripSID };
             var res = await _spContext.ExecuteStoreProcedure(query, param);
-            List<TripUpdateResponseModel> tripUpdateResponseModels =
-                JsonConvert.DeserializeObject<List<TripUpdateResponseModel>>(res?.ToString() ?? "[]");
+
+            // 1. Check if the response itself is null
             if (res == null)
             {
-                Log.Warning("GetAllTripUpdateStatus: No results found for TripSID: {TripSID}", tripSID);
-                throw new HttpStatusCodeException((int)StatusCode.NotFound, "No results found");
+                return new List<TripUpdateResponseModel>(); 
             }
+            
+            // var jsonResult = res?.Result?.ToString(); 
+            List<TripUpdateResponseModel> tripUpdateResponseModels =
+                JsonConvert.DeserializeObject<List<TripUpdateResponseModel>>(res ?? "[]");
 
-            Log.Information(
-                "GetAllTripUpdateStatus operation completed successfully for TripSID: {TripSID}. Retrieved {UpdateCount} trip updates",
-                tripSID, tripUpdateResponseModels.Count);
+            Log.Information("Retrieved {UpdateCount} trip updates", tripUpdateResponseModels.Count);
             return tripUpdateResponseModels;
-        }
-        catch (HttpStatusCodeException exception)
-        {
-            Log.Warning(
-                "GetAllTripUpdateStatus: HttpStatusCodeException occurred for TripSID: {TripSID} with status code {StatusCode} and message: {Message}",
-                tripSID, exception.StatusCode, exception.Message);
-            throw;
         }
         catch (Exception exception)
         {
-            Log.Error(exception,
-                "GetAllTripUpdateStatus: Unexpected error occurred while retrieving trip updates for TripSID: {TripSID}",
-                tripSID);
+            Log.Error(exception, "Error retrieving trip updates for {TripSID}", tripSID);
             throw new HttpStatusCodeException((int)StatusCode.InternalServerError, exception.Message);
         }
     }
