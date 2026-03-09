@@ -37,19 +37,6 @@ public class TripController : BaseController
             return BadRequest();
         }
 
-        if (response.Count == 0)
-        {
-            Log.Warning("No results found for search: {@SearchModel}", searchModel);
-            throw new HttpStatusCodeException((int)Common.StatusCode.BadRequest, "No results found");
-        }
-
-        list.Result = response;
-        if (response == null || !response.Any())
-        {
-            Log.Warning("GetAllTrips result is empty after deserialization");
-            return NotFound();
-        }
-
         Log.Information("Successfully fetched {Count} trips", response.Count);
         return Ok(BindSearchResult(list, searchModel, "All Trips"));
     }

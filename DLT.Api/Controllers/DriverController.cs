@@ -115,12 +115,6 @@ public class DriverController : BaseController
             throw new HttpStatusCodeException((int)Common.StatusCode.BadRequest, "No results found");;
         }
 
-        if (response.Count == 0)
-        {
-            Log.Warning("No Driver found for  with search filter {@SearchModel}", searchModel);
-            throw new HttpStatusCodeException((int)Common.StatusCode.BadRequest, "No results found");
-        }
-
         list.Result = response;
 
         Log.Information("Fetched {TripCount} trips for driver", response.Count);
