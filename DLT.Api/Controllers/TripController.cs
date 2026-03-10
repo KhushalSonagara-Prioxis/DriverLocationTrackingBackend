@@ -29,14 +29,15 @@ public class TripController : BaseController
 
         var parameters = FillParamesFromModel(searchModel);
         var list = await _tripRepository.GetAllTrips(parameters);
-        List<TripListResponseModel> response = JsonConvert.DeserializeObject<List<TripListResponseModel>>(list.Result?.ToString() ?? "[]") ?? [];
+        List<TripListResponseModel> response =
+            JsonConvert.DeserializeObject<List<TripListResponseModel>>(list.Result?.ToString() ?? "[]") ?? [];
 
         if (response == null)
         {
             Log.Warning("GetAllTrips returned null response");
             return BadRequest();
         }
-
+        list.Result = response;
         Log.Information("Successfully fetched {Count} trips", response.Count);
         return Ok(BindSearchResult(list, searchModel, "All Trips"));
     }
