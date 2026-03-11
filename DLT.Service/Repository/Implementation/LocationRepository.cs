@@ -78,7 +78,29 @@ public class LocationRepository : ILocationRepository
             {
                 LocationSID = l.LocationSid,
                 LocationName = model.LocationName,
+                Latitude = model.Latitude,
+                Longitude = model.Longitude
             };
+        }
+        catch (HttpStatusCodeException ex)
+        {
+            throw new HttpStatusCodeException(ex.StatusCode, ex.Message);
+        }
+    }
+
+    public async Task<bool> DeleteLocation(string locationSID)
+    {
+        try
+        {
+            var location = await _unitOfWork.GetRepository<Location>().SingleOrDefaultAsync(x => x.LocationSid == locationSID);
+            if (location == null)
+            {
+                throw new HttpStatusCodeException((int)StatusCode.NotFound, "Location not found");
+            }
+
+            _unitOfWork.GetRepository<Location>().Delete(location);
+            await _unitOfWork.CommitAsync();
+            return true;
         }
         catch (HttpStatusCodeException ex)
         {

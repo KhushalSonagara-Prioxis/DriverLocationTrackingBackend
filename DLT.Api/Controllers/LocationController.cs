@@ -57,4 +57,12 @@ public class LocationController : BaseController
         }
         return Ok(res);
     }
+
+    [HttpDelete("{locationSID}")]
+    [Authorize(Roles = "Admin")]
+    public async Task<IActionResult> DeleteLocation([FromRoute]string locationSID)
+    {
+        var res = await _locationRepository.DeleteLocation(locationSID);
+        return Ok(res);
+    }
 }

@@ -7,4 +7,5 @@ public interface ILocationRepository
 {
     Task<List<LocationResponseModel>> GetAllLocation();
     Task<LocationResponseModel> AddLocation(LocationRequestModel model);
+    Task<bool> DeleteLocation(string locationSID);
 }

@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DLT.Models.Models.DriverLocationTracking;
 
-[Index("LocationSid", Name = "UQ__Location__EF33EBE2A11B8F91", IsUnique = true)]
+[Index("LocationSid", Name = "UQ__Location__EF33EBE21FD9F2B8", IsUnique = true)]
 public partial class Location
 {
     [Key]
@@ -21,6 +21,12 @@ public partial class Location
     [StringLength(50)]
     [Unicode(false)]
     public string LocationName { get; set; } = null!;
+
+    [Column(TypeName = "decimal(9, 6)")]
+    public decimal? Latitude { get; set; }
+
+    [Column(TypeName = "decimal(9, 6)")]
+    public decimal? Longitude { get; set; }
 
     [InverseProperty("StartLocationNavigation")]
     public virtual ICollection<Trip> TripStartLocationNavigations { get; set; } = new List<Trip>();

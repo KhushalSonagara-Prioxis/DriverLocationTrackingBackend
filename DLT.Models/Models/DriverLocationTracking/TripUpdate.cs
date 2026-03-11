@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DLT.Models.Models.DriverLocationTracking;
 
-[Index("TripUpdatesSid", Name = "UQ__TripUpda__F59F0F746EE44F07", IsUnique = true)]
+[Index("TripUpdatesSid", Name = "UQ__TripUpda__F59F0F74204AF293", IsUnique = true)]
 public partial class TripUpdate
 {
     [Key]
