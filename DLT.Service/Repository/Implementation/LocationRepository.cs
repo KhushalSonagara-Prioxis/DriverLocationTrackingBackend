@@ -70,6 +70,8 @@ public class LocationRepository : ILocationRepository
             {
                 LocationSid = "LOC-" + Guid.NewGuid().ToString(),
                 LocationName = model.LocationName,
+                Latitude = model.Latitude,
+                Longitude = model.Longitude,
             };
             await _unitOfWork.GetRepository<Location>().InsertAsync(l);
             await _unitOfWork.CommitAsync();
